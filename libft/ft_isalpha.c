@@ -6,23 +6,19 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:45:43 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:55:04 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 18:13:54 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
+/**
+ * The isalpha() function tests for any character for which
+ * isupper(3) or islower(3) is true. The value of the
+ * argument must be representable as an unsigned char or the
+ * value of EOF.
+ */
 int	ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1024);
+		return (1);
 	return (0);
 }
-
-// #include <ctype.h>
-// #include <stdio.h>
-// int main(void)
-// {
-//     printf("Is 'c' an alphabet?\nft_isalpha result:%d\n", ft_isalpha('c'));
-//     printf("isalpha result:%d\n", isalpha('a'));
-// }

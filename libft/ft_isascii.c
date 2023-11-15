@@ -6,24 +6,17 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:47:29 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:38:06 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 18:14:01 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
+/**
+ * The isascii() function tests for an ASCII character, which
+ * is any character between 0 and octal 0177 inclusive.
+ */
 int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
 }
-
-// #include <ctype.h>
-// #include <wctype.h>
-// #include <stdio.h>
-// int main(void)
-// {
-//     printf("Is 'ö' ascii?\nft_isascii result:%d\n", ft_isascii(L'ö'));
-//     printf("isascii result:%d\n", isascii(L'ö'));
-// }

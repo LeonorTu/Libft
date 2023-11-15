@@ -6,12 +6,20 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:44:24 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:44:59 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 18:34:08 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Allocates (with malloc(3)) and returns a new string,
+ * which is the result of the concatenation of ’s1’ and
+ * ’s2’.
+ * @param s1 - The prefix string.
+ * @param s2 - The suffix string.
+ * @return The new string. NULL if the allocation fails.
+ */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
@@ -37,13 +45,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	s3[i] = '\0';
 	return (s3);
 }
-
-// #include <stdio.h>
-// int main(void)
-// {
-//     char *s1 = "Hello,";
-//     char *s2 = "World!";
-
-//     printf("s1: %s, s2: %s\n", s1, s2);
-//     printf("concatenate s1 and s2: %s", ft_strjoin(s1, s2));
-// }

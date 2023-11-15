@@ -6,43 +6,56 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:54:18 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/06 11:58:22 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/15 12:38:42 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	convert_num(const char *str, long value, int sign)
+{
+	while (*str >= 48 && *str <= 57)
+	{
+		if (value > LONG_MAX / 10)
+		{
+			if (sign > 0)
+				return (-1);
+			else
+				return (0);
+		}
+		value *= 10;
+		if (value > LONG_MAX - (*str - '0'))
+		{
+			if (sign > 0)
+				return (-1);
+			else
+				return (0);
+		}
+		value += *str - '0';
+		str++;
+	}
+	return (value);
+}
+
+/**
+ * The atoi() function converts the initial portion of the
+ * string pointed to by str to int representation.
+*/
 int	ft_atoi(const char *str)
 {
-	int	value;
-	int	np;
+	long	value;
+	int		sign;
 
 	value = 0;
-	np = 1;
+	sign = 1;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str ++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			np *= -1;
-		str ++;
+			sign *= -1;
+		str++;
 	}
-	while (*str >= 48 && *str <= 57)
-	{
-		value = value * 10 + *str - '0';
-		str ++;
-	}
-	return (np * value);
+	value = convert_num(str, value, sign);
+	return (sign * value);
 }
-// #include <stdio.h>
-// #include <stdlib.h>
-// int main(int argc, char *argv[])
-// {
-// 	if (argc == 2)
-// 	{
-// 		printf("ft_atoi result:%d\n", ft_atoi(argv[1]));
-// 		printf("atoi result:%d\n", atoi(argv[1]));
-// 	}
-// 	else
-// 		printf("Error!");
-// }

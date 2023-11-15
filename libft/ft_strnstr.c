@@ -6,44 +6,42 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:47:10 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:37:37 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 19:07:49 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+/**
+ * The strnstr() function locates the first occurrence of
+ * the null-terminated string needle in the string haystack,
+ * where not more than len characters are searched. Characters
+ * that appear after a `\0' character are not searched.
+ * @param haystack - The string to be searched
+ * @param needle - The string to search for
+ * @param len - The maximum number of characters to search
+ * @return If needle is an empty string, haystack is returned;
+ * if needle occurs nowhere in haystack, NULL is returned;
+ * otherwise a pointer to the first character of the first
+ * occurrence of needle is returned.
+*/
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*s1_temp;
-	char	*s2_temp;
+	size_t	i;
 
-	s1_temp = (char *)s1;
-	s2_temp = (char *)s2;
-	if (*s2 == '\0')
-		return ((char *)s1);
-	while (*s1_temp && n)
+	if (!*needle)
+		return ((char *)haystack);
+	if (!len)
+		return (NULL);
+	while (*haystack && len--)
 	{
-		if (*s1_temp == *s2_temp)
-			s2_temp++;
-		s1_temp++;
-		n--;
-		if (*s2_temp == '\0')
-			return ((char *)(s1_temp - (s2_temp - s2)));
+		i = 0;
+		while (*(haystack + i) == *(needle + i) && i <= len \
+		&& *(haystack + i) && *(needle + i))
+			i++;
+		if (*(needle + i) == '\0')
+			return ((char *)haystack);
+		haystack++;
 	}
 	return (NULL);
 }
-
-// #include <string.h>
-// #include <stdio.h>
-// int main(void)
-// {
-
-// 	// char * teststd = strnstr(((void *)0), "fake", 3);
-// 	char * testft = ft_strnstr(((void *)0), "fake", 3);
-// 	char str[] = "jhhk";
-// 	char to_find[] = "";
-// 	// printf("strnstr result: %s\n", strnstr(str, to_find, 0));
-// 	// printf("ft_strnstr result: %s\n", ft_strnstr(str, to_find, 0));
-// 	// printf("strnstr result: %s\n", teststd);
-// 	printf("ft_strnstr result: %s\n", testft);
-// }

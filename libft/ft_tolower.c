@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:39:46 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 21:04:57 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/10 16:27:59 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,3 @@ int	ft_tolower(int c)
 		c += 32;
 	return (c);
 }
-
-// #include <ctype.h>
-// #include <stdio.h>
-// int main(void)
-// {
-//     printf("Convert A to lowercase\nft_toupper result: %c\n", ft_tolower('A'));
-// 	printf("toupper result: %c\n", tolower('A'));
-// }

@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:22:36 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:37:42 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/13 10:47:49 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,3 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		i++;
 	}
 }
-// #include <stdio.h>
-// void minus(unsigned int n, char *s)
-// {
-//     *s = *s - n;
-// }
-
-// int main(void)
-// {
-//     char a[] = "Hello";
-//     ft_striteri(a, minus);
-//     printf("%s\n", a);
-// }

@@ -6,35 +6,26 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:47:18 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:37:35 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 19:11:09 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * The strrchr() function returns a pointer to the last
+ * occurrence of the character c in the string s.
+ */
 char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
-		i++;
+	i = ft_strlen(s);
 	while (i >= 0)
 	{
-		if (c == s[i])
-			return (char *)(s + i);
+		if ((char)c == s[i])
+			return ((char *)(s + i));
 		i--;
 	}
 	return (NULL);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int main()
-// {
-//     char s[] = "Hello, World!";
-//     int c = 0;
-
-//     printf("s = %s, c = %c, ft_strcrhr result:%s\n", s, c, ft_strrchr(s, c));
-//     printf("s = %s, c = %c, strrchr result:%s\n", s, c, strrchr(s, c));
-// }

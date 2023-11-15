@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:34:11 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/04 14:48:56 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/10 16:54:18 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,3 @@ t_list	*ft_lstnew(void *content)
 	new_node->next = NULL;
 	return (new_node);
 }
-
-// #include <stdio.h>
-// int main(void)
-// {
-//     int value = 42;
-//     t_list *new_node = ft_lstnew(&value);
-
-//     if (new_node -> content == &value)
-//         printf("Sucess!");
-//     else
-//         printf("Error!");
-//     printf("value of new_node->content: %d\n", *(int*)(new_node->content));
-// }

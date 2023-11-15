@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:25:09 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:38:19 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 18:38:04 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 /**
  * Outputs the string ’s’ to the given file descriptor.
+ * @param s - The string to output.
+ * @param fd - The file descriptor on which to write.
  */
-
 void	ft_putstr_fd(char *s, int fd)
 {
 	while (*s)
@@ -24,9 +25,3 @@ void	ft_putstr_fd(char *s, int fd)
 		s++;
 	}
 }
-
-// int main(void)
-// {
-//     char *str = "the cake is a lie !\0I'm hidden lol\r\n";
-//     ft_putstr_fd(str, 1);
-// }

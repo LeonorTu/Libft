@@ -6,32 +6,30 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:46:51 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:37:44 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 16:10:18 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * The strchr() function locates the first occurrence of c
+ * (converted to a char) in the string pointed to by s. The
+ * terminating null character is considered to be part of
+ * the string; therefore if c is `\0', the functions locate
+ * the terminating `\0'.
+ * @param s - This is the C string to be scanned.
+ * @param c - This is the character to be searched in str.
+*/
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
-		if (c == *s)
+		if ((char)c == *s)
 			return ((char *)s);
 		s++;
 	}
-	if (c == 0)
+	if ((char)c == 0)
 		return ((char *)s);
 	return (NULL);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int main()
-// {
-//     char s[] = "Hello, World!";
-//     int c = 3;
-
-//     printf("s = %s, c = %c, ft_strchr result:%s\n", s, c, ft_strchr(s, c));
-//     printf("s = %s, c = %c, strchr result:%s\n", s, c, strchr(s, c));
-// }

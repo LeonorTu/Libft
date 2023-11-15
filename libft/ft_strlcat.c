@@ -6,12 +6,25 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:30:00 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 21:04:34 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 20:13:01 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * strlcat() appends string src to the end of dst. It
+ * will append at most dstsize - strlen(dst) - 1
+ * characters.  It will then NUL-terminate, unless
+ * dstsize is 0 or the original dst string was
+ * longer than dstsize (in practice this should not
+ * happen as it means that either dstsize is incorrect
+ * or that dst is not a proper string).
+ * @param dst - The string to be appended to
+ * @param src - The string to append to it
+ * @param size - The size of the destination buffer
+ * @return strlen(src) + MIN(siz, strlen(initial dst))
+*/
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	unsigned int	i;
@@ -22,7 +35,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (size == 0)
 		return (len_src + size);
 	len_dst = ft_strlen(dst);
-	if (size < len_dst)
+	if (size <= len_dst)
 		return (len_src + size);
 	i = 0;
 	while (src[i] && i < size - len_dst - 1)
@@ -33,25 +46,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[i + len_dst] = '\0';
 	return (len_dst + len_src);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-//  int main(void)
-//  {
-//   	size_t n;
-//   	char str1[20] = "This is 5\n31\t313";
-//   	char str2[20] = "This is 5\n31\t313";
-//   	char str3[] = "a test.";
-
-//   	n = 3;
-//   	printf("Print str1: %s\n", str1);
-//   	printf("Print str3: %s\n", str3);
-//   	printf("Concatenate str1 and str2 for %zu -1 characters\n", n);
-//   	 the resultant string is stored in str1.
-//   	ft_strlcat(str1, str2, n);
-//   	printf("strlcat result: \nPrint str1: %s and return value: %zu\n", str2,strlcat(str2, str3, n));
-//   	printf("ft_strlcat result: \nPrint str1: %s and return value: %zu\n", str1, ft_strlcat(str1, str3, n));
-//  	char str[50] = "";
-
-//  	printf("%lu\n", ft_strlcat(str, "world", 0));
-//  }

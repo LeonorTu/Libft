@@ -6,12 +6,17 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:43:44 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:37:33 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 16:12:43 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Allocates (with malloc(3)) and returns a copy of
+ * ’s1’ with the characters specified in ’set’ removed
+ * from the beginning and the end of the string.
+*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*s1_trim;
@@ -39,13 +44,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s1_trim[i] = '\0';
 	return (s1_trim);
 }
-
-// #include <stdio.h>
-// int main(void)
-// {
-//     char *s1 = "   \t  \n\n \t\t  \n\n\n\t\n  ";;
-//     char *set = " \t\n";
-
-//     printf("s1: %s, set: %s\n", s1, set);
-//     printf("After ft_strtrim: %s", ft_strtrim(s1, set));
-// }

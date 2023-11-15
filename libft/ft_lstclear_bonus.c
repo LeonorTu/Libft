@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:27:27 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/04 16:05:49 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/10 17:05:27 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,3 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	ft_lstdelone(*lst, del);
 	*lst = NULL;
 }
-
-// void	del_node(void *content)
-// {
-// 	free(content);
-// }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	t_list *node;
-// 	node = malloc(sizeof(t_list));
-// 	node->content = malloc(sizeof(int));
-// 	*(int *)(node->content) = 42;
-// 	t_list *new_node1;
-// 	new_node1 = malloc(sizeof(t_list));
-// 	new_node1->content = malloc(sizeof(int));
-// 	*(int *)(new_node1->content) = 24;
-// 	node->next = new_node1;
-// 	t_list *new_node2;
-// 	new_node2 = malloc(sizeof(t_list));
-// 	new_node2->content = malloc(sizeof(int));
-// 	*(int *)(new_node2->content) = 55;
-// 	new_node2->next = NULL;
-// 	new_node1->next = new_node2;
-
-// 	printf("the value of the first node in list: %d\n", *(int *)((*node).content));
-// 	printf("the value of the second node in list: %d\n", *(int *)((*(node->next)).content));
-// 	printf("the value of the third node in list: %d\n", *(int *)((*(new_node1->next)).content));
-
-// 	ft_lstclear(&node, del_node);
-// 	if (!node)
-// 		printf("SUCCESS!\n");
-// }

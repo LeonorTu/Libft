@@ -55,18 +55,17 @@ all: ${NAME}
 
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
+	ar rcs ${NAME} $@
 
 ${NAME}: ${OBJS}
-	ar rcs ${NAME} ${OBJS}
 
 bonus: ${OBJS} ${BONUS_OBJS}
-	ar rcs ${NAME} ${OBJS} ${BONUS_OBJS}
 
 clean:
 	rm -f ${OBJS} ${BONUS_OBJS}
 
 fclean: clean
-	rm -f ${NAME} 
+	rm -f ${NAME}
 
 re: fclean all
 

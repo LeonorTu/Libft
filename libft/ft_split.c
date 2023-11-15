@@ -6,20 +6,13 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:42:12 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/03 20:37:46 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/14 20:17:48 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * Allocates (with malloc(3)) and returns an array
- * of strings obtained by splitting ’s’ using the
- * character ’c’ as a delimiter. The array must end
- * with a NULL pointer.
-*/
-
-int	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int	word;
 	int	i;
@@ -28,78 +21,70 @@ int	count_words(char const *s, char c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
-		{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i])
 			word++;
-			while (s[i] && s[i] == c)
-				i++;
-			continue ;
-		}
-		i++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	if (s[i - 1] != c)
-		word++;
 	return (word);
 }
 
-char	*ft_strcpy(char *dest, char const *src, char c)
+static void	free_ptr(char **ptr, int i)
 {
-	int	i;
-
-	i = 0;
-	while (src[i] != c && src[i])
+	while (i > 0)
 	{
-		dest[i] = src[i];
-		i ++;
+		i--;
+		free(ptr[i]);
 	}
-	dest[i] = '\0';
-	return (dest);
+	free(ptr);
 }
 
+static char	**split(char const *s, char c, char **ptr)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s)
+		{
+			i = 0;
+			while (*(s + i) && *(s + i) != c)
+				i++;
+			ptr[j] = malloc(sizeof(char) * (i + 1));
+			if (!ptr[j])
+			{
+				free_ptr(ptr, j);
+				return (NULL);
+			}
+			ft_strlcpy(ptr[j++], s, i + 1);
+			s += i;
+		}
+	}
+	ptr[j] = 0;
+	return (ptr);
+}
+
+/**
+ * Allocates (with malloc(3)) and returns an array
+ * of strings obtained by splitting ’s’ using the
+ * character ’c’ as a delimiter. The array must end
+ * with a NULL pointer.
+ * @param s - The string to be split.
+ * @param c - The delimiter character.
+ */
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
-	int		i;
-	int		j;
-	int		k;
 
 	ptr = malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (!ptr)
 		return (NULL);
-	i = 0;
-	k = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			j = 0;
-			while (s[i + j] != c && s[i + j])
-				j++;
-			ptr[k] = malloc(sizeof(char) * (j + 1));
-			ft_strcpy(ptr[k], s + i, c);
-			i += j;
-			k++;
-		}
-	}
-	ptr[k] = 0;
+	ptr = split(s, c, ptr);
 	return (ptr);
 }
-
-// #include <stdio.h>
-// int main(void)
-// {
-// 	char *str = "      split       this for   me  !       ";
-//     char c = ' ';
-// 	char **result = ft_split(str, c);
-// 	int	i = 0;
-
-// 	printf("%s\n", str);
-// 	while(result[i])
-// 	{
-// 		printf("%s\n", result[i]);
-// 		free(result[i]); // Free individual strings.
-//         i++;
-// 	}
-// }
