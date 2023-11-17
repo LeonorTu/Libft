@@ -6,13 +6,13 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:54:18 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/15 12:38:42 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/15 16:19:29 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	convert_num(const char *str, long value, int sign)
+static int	convert_num(const char *str, long value, int sign)
 {
 	while (*str >= 48 && *str <= 57)
 	{

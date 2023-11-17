@@ -10,16 +10,20 @@ int	ft_putnbr(int n)
 	nbr = n;
 	if (nbr < 0)
 	{
-		ft_putchar('-');
+		if (ft_putchar('-') != 1)
+			return (-1);
 		nbr = -nbr;
 	}
 	if (nbr >= 10)
 	{
-		ft_putnbr_fd(nbr / 10);
-		ft_putnbr_fd(nbr % 10);
+		if (ft_putnbr(nbr / 10) != 1)
+			return (-1);
+		if (ft_putnbr(nbr % 10) != 1)
+			return (-1);
 	}
 	else
-		ft_putchar_fd(nbr + '0');
+		if (ft_putchar(nbr + '0') != 1)
+			return (-1);
 	return (1);
 }
 
@@ -46,3 +50,28 @@ int	ft_putstr(char *s)
 	}
 	return (1);
 }
+
+int	ft_puthex(unsigned int n)
+{
+	long	nbr;
+
+	nbr = n;
+	if (nbr < 0)
+	{
+		if (ft_putchar('-') != 1)
+			return (-1);
+		nbr = -nbr;
+	}
+	if (nbr >= 10)
+	{
+		if (ft_putnbr(nbr / 16) != 1)
+			return (-1);
+		if (ft_putnbr(nbr % 10) != 1)
+			return (-1);
+	}
+	else
+		if (ft_putchar(nbr + '0') != 1)
+			return (-1);
+	return (1);
+}
+

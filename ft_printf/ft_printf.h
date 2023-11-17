@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:46:21 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/16 15:22:33 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/17 14:44:14 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <stdarg.h>
 
 typedef struct s_printf{
-	va_list args;
+	va_list	args;
+	int	num;
 }	t_printf;
 
 
