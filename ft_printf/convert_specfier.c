@@ -19,7 +19,7 @@ int convert_spec(va_list print, const char *fmt)
 	}
 	if (fmt == 'd' || fmt == 'i')
 	{
-		ft_putnbr(va_arg(print.args, int));
+		ft_putnbr_base(va_arg(print.args, int), );
 		//
 	}
 	if (fmt == 'u')

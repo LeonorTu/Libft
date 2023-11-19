@@ -1,5 +1,5 @@
 /**
- * Outputs the character ’c’ to the given file descriptor.
+ * Outputs the integer ’n’ to the given file descriptor.
  * @param n - The integer to output.
  * @param fd - The file descriptor on which to write.
  */
@@ -23,6 +23,30 @@ int	ft_putnbr(int n)
 	}
 	else
 		if (ft_putchar(nbr + '0') != 1)
+			return (-1);
+	return (1);
+}
+
+/**
+ * Outputs the unsigned integer ’n’ to the given bases.
+ * @param n - The unsigned integer to output.
+ */
+int	ft_putnbr_base(unsigned long long n, char *base)
+{
+	long	nbr;
+	int		base_len;
+
+	nbr = n;
+	base_len = ft_strlen(base);
+	if (nbr >= base_len)
+	{
+		if (ft_putnbr_base(nbr / base_len, base) != 1)
+			return (-1);
+		if (ft_putnbr_base(nbr % base_len, base) != 1)
+			return (-1);
+	}
+	else
+		if (ft_putchar(nbr + base) != 1)
 			return (-1);
 	return (1);
 }
@@ -75,3 +99,7 @@ int	ft_puthex(unsigned int n)
 	return (1);
 }
 
+ft_putaddress()
+{
+
+}
