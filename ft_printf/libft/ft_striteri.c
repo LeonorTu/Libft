@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Created: 2023/10/31 11:22:36 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/13 10:47:49 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+/**
+ * Applies the function ’f’ on each character of
+ * the string passed as argument, passing its index
+ * as first argument. Each character is passed by
+ * address to ’f’ to be modified if necessary.
+ */
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int				i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
+	unsigned int	i;
 
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
 	i = 0;
-	while (i < n)
+	while (s[i])
 	{
-		if (src2[i] == c)
-			return ((void *)(dest2 + i));
-		dest2[i] = src2[i];
+		f(i, &(s[i]));
 		i++;
 	}
-	return (NULL);
 }

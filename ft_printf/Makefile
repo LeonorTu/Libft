@@ -1,6 +1,8 @@
 NAME = libftprintf.a
 
 SRCS = ft_printf.c \
+		ft_put_function.c \
+		ft_specifier.c \
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -12,14 +14,14 @@ all: ${NAME}
 
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
-	ar rcs ${NAME} $@
 
 ${NAME}: ${OBJS}
-
-bonus: ${OBJS} ${BONUS_OBJS}
+	$(MAKE) -C libft/ bonus
+	cp libft/libft.a libftprintf.a
+	ar -rcs $(NAME) $(OBJS)
 
 clean:
-	rm -f ${OBJS} ${BONUS_OBJS}
+	rm -f ${OBJS}
 
 fclean: clean
 	rm -f ${NAME}

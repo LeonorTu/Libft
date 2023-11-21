@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Created: 2023/10/25 15:40:08 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 18:13:26 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+/**
+ * The isdigit() function tests for a decimal digit character.
+ */
+int	ft_isdigit(int c)
 {
-	int				i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
-
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		if (src2[i] == c)
-			return ((void *)(dest2 + i));
-		dest2[i] = src2[i];
-		i++;
-	}
-	return (NULL);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

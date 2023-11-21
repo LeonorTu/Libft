@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Created: 2023/11/01 12:35:47 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 18:45:05 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+/**
+ * Outputs the string ’s’ to the given file descriptor
+ * followed by a newline.
+ * @param s - The string to output.
+ * @param fd - The file descriptor on which to write.
+ */
+void	ft_putendl_fd(char *s, int fd)
 {
-	int				i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
-
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
-	i = 0;
-	while (i < n)
+	while (*s)
 	{
-		if (src2[i] == c)
-			return ((void *)(dest2 + i));
-		dest2[i] = src2[i];
-		i++;
+		write(fd, s, 1);
+		s++;
 	}
-	return (NULL);
+	write(fd, "\n", 1);
 }

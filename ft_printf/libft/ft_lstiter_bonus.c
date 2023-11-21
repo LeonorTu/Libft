@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Created: 2023/11/02 14:54:56 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/10 17:07:28 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+/**
+ * Iterates the list ’lst’ and applies the function
+ * ’f’ on the content of each node.
+ * @param lst - The address of a pointer to a node.
+ * @param f -  The address of the function used to iterate
+ * on the list.
+ */
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int				i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
-
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
-	i = 0;
-	while (i < n)
+	while (lst)
 	{
-		if (src2[i] == c)
-			return ((void *)(dest2 + i));
-		dest2[i] = src2[i];
-		i++;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (NULL);
 }

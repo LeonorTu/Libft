@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Created: 2023/11/01 16:57:22 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 18:24:42 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+/**
+ * Counts the number of nodes in a list.
+ */
+int	ft_lstsize(t_list *lst)
 {
-	int				i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
+	int	len;
 
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
-	i = 0;
-	while (i < n)
+	len = 0;
+	while (lst)
 	{
-		if (src2[i] == c)
-			return ((void *)(dest2 + i));
-		dest2[i] = src2[i];
-		i++;
+		len++;
+		lst = lst->next;
 	}
-	return (NULL);
+	return (len);
 }

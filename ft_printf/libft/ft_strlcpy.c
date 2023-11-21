@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Created: 2023/10/25 14:48:39 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 19:03:18 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+/**
+ * strlcpy() copies up to dstsize - 1 characters from the
+ * string src to dst, NUL-terminating the result if dstsize
+ * is not 0.
+ */
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int				i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
+	size_t	i;
 
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
 	i = 0;
-	while (i < n)
-	{
-		if (src2[i] == c)
-			return ((void *)(dest2 + i));
-		dest2[i] = src2[i];
+	while (src[i])
 		i++;
-	}
-	return (NULL);
+	if (dstsize == 0)
+		return (i);
+	while (--dstsize && *src)
+		*dst++ = *src++;
+	*dst = 0;
+	return (i);
 }

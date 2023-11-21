@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Created: 2023/08/17 10:30:50 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 19:01:45 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+/**
+ * The strlen() function computes the length of the string s.
+ * The strnlen() function attempts to compute the length of s,
+ * but never scans beyond the first maxlen bytes of s.
+ */
+size_t	ft_strlen(const char *str)
 {
-	int				i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
+	size_t	i;
 
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
 	i = 0;
-	while (i < n)
-	{
-		if (src2[i] == c)
-			return ((void *)(dest2 + i));
-		dest2[i] = src2[i];
-		i++;
-	}
-	return (NULL);
+	while (str[i])
+		i ++;
+	return (i);
 }

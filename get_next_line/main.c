@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <limits.h>
 
-
 int	test_pointer(char *str, unsigned long arg)
 {
 	int ft;
