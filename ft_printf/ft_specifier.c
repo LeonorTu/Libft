@@ -6,12 +6,12 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:41:15 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/21 18:50:38 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/22 13:16:37 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
+
 int	convert_spec(t_printf *print, const char *fmt)
 {
 	if (*fmt == 'c')
@@ -90,8 +90,8 @@ int	print_ads(t_printf *print)
 	if (ft_putstr("0x") != 1)
 		return (-1);
 	print->len += 2;
-	if (ft_putnbr_base((long)ptr, HEXALOW, 'x') != 1)
+	if (ft_putnbr_base_ul((long)ptr, HEXALOW) != 1)
 		return (-1);
-	print->len += ft_numlen_base((long)ptr, HEXALOW, 'x');
+	print->len += ft_numlen_base_ul((long)ptr, HEXALOW);
 	return (1);
 }

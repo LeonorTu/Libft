@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:46:21 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/21 16:35:39 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/22 12:54:18 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int		print_char(t_printf *print);
 int		print_str(t_printf *print);
 int		print_num(t_printf *print, char *base, char type);
 int		print_ads(t_printf *print);
+int		ft_putnbr_base_ul(unsigned long nbr, char *base);
+int		ft_numlen_base_ul(unsigned long nbr, char *base);
 
 #endif
