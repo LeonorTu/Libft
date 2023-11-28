@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: leonortu <leonortu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:39 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/27 16:03:20 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/28 15:27:33 by leonortu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 char	*get_next_line(int fd)
 {
-	static char	buf;
-	char	*line;
+	static char *rest;
+	char		*buf;
+	char		*line;
+	int			read_len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &buf, 0) < 0)
 		return (NULL);
 	while ()
 	{
-		if (read(fd, buf, BUFFER_SIZE) <= 0)
+		read_len = read(fd, buf, BUFFER_SIZE);
+		if (read_len <= 0)
 			free(buf);
-			return ();
+			return (NULL);
+		buf[read_len] = '\0';
+
 		
 	}
 	return (line);
