@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:52 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/29 16:29:08 by jtu              ###   ########.fr       */
+/*   Updated: 2023/11/30 20:54:29 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*get_next_line(int fd);
 //char	*ft_get_line(char *stash);
 //char	*stash_update(char *stash);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *stash, char const *buf);
-size_t	ft_strlen(const char *str);
+char	*ft_strjoin(char *stash, char *buf);
+int	ft_strlen(const char *str);
 
 #endif
