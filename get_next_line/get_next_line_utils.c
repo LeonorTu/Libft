@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:55 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/01 13:43:19 by jtu              ###   ########.fr       */
+/*   Updated: 2023/12/01 15:24:21 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,71 +27,32 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-// char	*ft_strjoin(char *stash, char *buf)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*str;
-// 	//int		len;
-
-// 	// if (!stash)
-// 	// 	len = 0;
-// 	// else
-// 	// 	len = ft_strlen(stash);
-// 	if (!stash)
-// 	{
-// 		stash = malloc(sizeof(char) * 1);
-// 		*stash = '\0';
-// 	}
-// 	if (!stash || !buf)
-// 		return (NULL);
-// 	str = malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(buf) + 1));
-// 	//if (!str)
-// 	if (!str || !buf)
-// 		return (free(str), free(buf), NULL);
-// 	i = -1;
-// 	j = 0;
-// 	while (stash[++i])
-// 		str[i] = stash[i];
-// 	while (buf[j])
-// 		str[i++] = buf[j++];
-// 	str[ft_strlen(stash) + ft_strlen(buf)] = '\0';
-// 	if (stash)
-// 		free(stash);
-// 	return (str);
-// }
-
 char	*ft_strjoin(char *stash, char *buf)
 {
 	int		i;
 	int		j;
 	char	*str;
-	int		len;
 
 	if (!stash)
-		len = 0;
-	else
-		len = ft_strlen(stash);
-	// if (!stash)
-	// {
-	// 	stash = malloc(sizeof(char) * 1);
-	// 	*stash = '\0';
-	// }
-	// if (!stash || !buf)
-	// 	return (NULL);
-	str = malloc(sizeof(char) * (len + ft_strlen(buf) + 1));
-	//if (!str)
-	if (!str || !buf)
-		return (free(str), free(buf), NULL);
+	{
+		stash = malloc(sizeof(char) * 1);
+		if (!stash)
+			return (NULL);
+		*stash = '\0';
+	}
+	if (!stash || !buf)
+		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(buf) + 1));
+	if (!str)
+		return (free(buf), NULL);
 	i = -1;
 	j = 0;
-	while (++i < len)
+	while (stash[++i])
 		str[i] = stash[i];
 	while (buf[j])
 		str[i++] = buf[j++];
-	str[len + ft_strlen(buf)] = '\0';
-	if (stash)
-		free(stash);
+	str[ft_strlen(stash) + ft_strlen(buf)] = '\0';
+	free(stash);
 	return (str);
 }
 
