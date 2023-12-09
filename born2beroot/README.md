@@ -37,9 +37,9 @@ Common port numbers
 
 **User**
 * Check that your user is within the "sudo" and "user42" groups.  
-`getent group sudo ` 
-`getent group user42`
-Output meaning
+`getent group sudo `   
+`getent group user42`  
+Output meaning  
 | Field | Description |  
 |---|---|---|   
 | sudo | Name of the group |  
