@@ -76,22 +76,58 @@ To verify that it has been entered correctly.
 * Check that sudo is installed.   
 `which sudo`
 The dpkg command is used to manage packages in Debian-based Linux distributions.  
-`dpkg -s sudo`  
+`dpkg -s sudo`
+
 * Add the new user to the sudo group.  
 `sudo adduser username sudo`   
 check that it is within the group.  
-`getent group sudo`  
+`getent group sudo`
+
 * Show the application of the rules imposed for sudo by the subject.  
-`nano /etc/sudoers.d/sudo_config`  
+`nano /etc/sudoers.d/sudo_config`
+
 * Show that the path /var/log/sudo/ exists and contains at least one file, in this we should see a history of the commands used with sudo.  
 `cd /var/log/sudo`  
 `ls`  
 `cat sudo_config`  
 
 **UFW/Firewalld**
+* Check that the UFW program is installed on the virtual machine and check that it works correctly.  
+`dpkg -s ufw`  
+`sudo service ufw status`  
+
+* List the active rules in UFW, if the bonus part is not done, the rule for port 4242 should only appear.
+`sudo ufw status`
+
+* Create a new rule for port 8080. Verify that it has been added to the active rules and then you can delete it.
+`sudo ufw allow 8080`
+`sudo ufw delete allow 8080`
 
 **SSH**
+* Check that the ssh service is installed on the virtual machine, that it works correctly, and that it only works on port 4242.
+`which ssh`
+`sudo service ssh status`
+
+* Use ssh to log in with the newly created user. Make sure that you cannot use ssh with the root user.
+`ssh username@localhost -p 4242`
+`su -`
 
 **Script Monitoring**
+* Modify the runtime of the script from 10 minutes to 1.  
+`sudo crontab -u root -e`  
+* Make the script stop running when the server has started, but without modifying the script.  
+`sudo /etc/init.d/cron stop`  
+`sudo /etc/init.d/cron start`  
 
 **Bonus**
+* connect server to the web server  
+`ftp 10.0.2.15`  
+
+* find the current local directory  
+`!pwd`
+
+* list the files in local directory  
+`!ls`
+
+* get the file from remote directory
+`mget file_name`
