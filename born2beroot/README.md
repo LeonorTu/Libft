@@ -8,7 +8,8 @@ If something breaks iside VM, it doesn't affect the host machine.
 * Test your app on different OS  
 
 **Debian vs Rocky**
-* Debian is maintained by 
+* Debian is maintained by non-profit community. It uses AppArmor as its primary mandatory access control system which is easier to set up and manage.
+* Rocky is based on Red Hat Enterprise Linux (enterprise operating system). 
 
 * **Port**
 Range: 0-65535 (0-1023: System or well-known ports)  
