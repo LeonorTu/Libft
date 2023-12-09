@@ -18,20 +18,20 @@
 **APPArmor**  
 A security module in the Linux kernel that allows the system administrator to restrict the capabilities of a program.
 
-* **Port**  
+**Port**  
 Range: 0-65535 (0-1023: System or well-known ports)  
 Common port numbers  
 80, 443 - Web pages (HTTP (Hypertext Transfer Protocol), HTTPS (Hypertext Transfer Protocol Secure))  
 21 - FTP (File Transfer Protocal: The standard protocol used to transfer files over a network)  
 25 - Email (SMTP) 
 
-* **WordPress**  
+**WordPress**  
 A content management system focused on the creation of any type of website.  
 
-* **Mariadb**  
+**Mariadb**  
 A database used for various purposes, such as data warehousing, e-commerce, enterprise-level functions, and logging applications.  
 
-* **PHP**  
+**PHP**  
 A programming language used to develop dynamic web applications and interactive websites. PHP runs on the server side.  
 
 **Evaluation Command**  
