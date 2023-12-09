@@ -25,6 +25,15 @@ Common port numbers
 21 - FTP (File Transfer Protocal: The standard protocol used to transfer files over a network)  
 25 - Email (SMTP) 
 
+* **WordPress**  
+A content management system focused on the creation of any type of website.  
+
+* **Mariadb**  
+A database used for various purposes, such as data warehousing, e-commerce, enterprise-level functions, and logging applications.  
+
+* **PHP**  
+A programming language used to develop dynamic web applications and interactive websites. PHP runs on the server side.  
+
 **Evaluation Command**  
 **Simple Setup**
 * Check UFW service is in use.  
