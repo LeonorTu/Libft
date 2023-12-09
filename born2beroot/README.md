@@ -18,12 +18,18 @@
 **APPArmor**  
 A security module in the Linux kernel that allows the system administrator to restrict the capabilities of a program.
 
+**UFW**  
+* UFW(Uncomplicated Firewall) is a software application responsible for ensuring that the system administrator can manage iptables in a simple way.   
+
 **SUDO**  
 * sudo (superuser do) is a command in Linux and Unix-like operating systems that allows users to run commands with the privileges of another user, most commonly the root user.  
 Value of sudo
 * Increased security: By allowing non-root users to perform administrative tasks, sudo reduces the need for users to log in as root, which can help to protect the system from unauthorized access and malicious actions.  
 * Simplified administration: sudo simplifies system administration by allowing non-root users to perform tasks without the need to manually switch to the root user. This can save time and effort for system administrators.  
 * Increased accountability: When non-root users run commands with sudo, their actions are logged, which can help to track who performed specific system changes and when they were made. This can aid in troubleshooting and identifying potential security issues.  
+
+**Cron**  
+Linux task manager that allows us to execute commands at a certain time. We can automate some tasks just by telling cron what command we want to run at a specific time.  
 
 **Port**  
 Range: 0-65535 (0-1023: System or well-known ports)  
