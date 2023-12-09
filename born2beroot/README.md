@@ -26,5 +26,10 @@ Common port numbers
 25 - Email (SMTP) 
 
 **Evaluation Command**
-* Verify that no graphical interface is in use  
-`ls /usr/bin/*session`
+* Check UFW service is in use.  
+`sudo ufw status`  
+`sudo service ufw status`  
+* Check that the SSH service is in use.
+`sudo service ssh status`
+* Check that you are using the Debian or Centos operating system.
+`uname -v`
