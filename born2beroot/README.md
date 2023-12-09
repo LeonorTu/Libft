@@ -26,10 +26,23 @@ Common port numbers
 25 - Email (SMTP) 
 
 **Evaluation Command**
+**Simple Setup**
 * Check UFW service is in use.  
 `sudo ufw status`  
 `sudo service ufw status`  
-* Check that the SSH service is in use.
-`sudo service ssh status`
-* Check that you are using the Debian or Centos operating system.
-`uname -v`
+* Check that the SSH service is in use.  
+`sudo service ssh status`  
+* Check that you are using the Debian or Centos operating system.  
+`uname -v`  
+
+**User**
+* Check that your user is within the "sudo" and "user42" groups.  
+`getent group sudo`  
+`getent group user42`
+Output meaning  
+| Field | Description |
+|---|---|---|
+| sudo | Name of the group |
+| x | Group identifier (GID) |
+| 27 | Numerical identifier (GID) |
+| jtu | Member of the group |
