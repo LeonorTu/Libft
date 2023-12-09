@@ -142,5 +142,5 @@ FTP(File Transfer Protocal)
 * list the files in local directory  
 `!ls`
 
-* get the file from remote directory
+* get the file from remote directory  
 `mget file_name`
