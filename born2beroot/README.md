@@ -27,4 +27,4 @@ Common port numbers
 
 **Evaluation Command**
 * Verify that no graphical interface is in use  
-     ls /usr/bin/*session
+``     ls /usr/bin/*session
