@@ -12,7 +12,7 @@
 * Rocky is based on Red Hat Enterprise Linux (enterprise operating system). 
 
 **Aptitude vs Apt**
-* APT is a lower-level package manager and aptitude is a high-level package manager.
+* APT is a lower-level package manager and Aptitude is a high-level package manager.
 * APT is gommand-line tool which is text-base and Aptitude is graphical user interface which is more user-friendly.
 
 **APPArmor**  
