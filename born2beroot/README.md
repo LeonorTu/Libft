@@ -15,7 +15,7 @@
 * APT is a lower-level package manager and aptitude is a high-level package manager.
 * APT is gommand-line tool which is text-base and Aptitude is graphical user interface which is more user-friendly.
 
-**APPArmor**
+**APPArmor**  
 A security module in the Linux kernel that allows the system administrator to restrict the capabilities of a program.
 
 * **Port**  
@@ -63,17 +63,30 @@ To verify that it has been entered correctly.
 `hostname`  
 
 * Modify hostname to replace your login with the evaluator's. In this case, we will replace it with student42.  
-`sudo nano /etc/hostname`  
-`sudo nano /etc/hosts`
+`sudo nano /etc/hostname`   
+`sudo nano /etc/hosts`  
 
-* Reboot the machine.
-`sudo reboot`
+* Reboot the machine.  
+`sudo reboot`  
 
-* View the partition
-`lsblk`
+* View the partition  
+`lsblk`  
 
-**SUDO**
-
+**SUDO**  
+* Check that sudo is installed.   
+`which sudo`
+The dpkg command is used to manage packages in Debian-based Linux distributions.  
+`dpkg -s sudo`  
+* Add the new user to the sudo group.  
+`sudo adduser username sudo`   
+check that it is within the group.  
+`getent group sudo`  
+* Show the application of the rules imposed for sudo by the subject.  
+`nano /etc/sudoers.d/sudo_config`  
+* Show that the path /var/log/sudo/ exists and contains at least one file, in this we should see a history of the commands used with sudo.  
+`cd /var/log/sudo`  
+`ls`  
+`cat sudo_config`  
 
 **UFW/Firewalld**
 
