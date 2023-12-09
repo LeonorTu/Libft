@@ -39,10 +39,11 @@ Common port numbers
 * Check that your user is within the "sudo" and "user42" groups.  
 `getent group sudo ` 
 `getent group user42`
-Output meaning  
-| Field | Description |
+Output meaning
+`| Field | Description |
 |---|---|---|
 | sudo | Name of the group |
 | x | Group identifier (GID) |
 | 27 | Numerical identifier (GID) |
-| jtu | Member of the group |
+| jtu | Member of the group |`
+
