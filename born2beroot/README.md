@@ -26,5 +26,5 @@ Common port numbers
 25 - Email (SMTP) 
 
 **Evaluation Command**
-* Verify that no graphical interface is in use
+* Verify that no graphical interface is in use  
      ls /usr/bin/*session
