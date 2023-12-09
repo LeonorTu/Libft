@@ -28,6 +28,9 @@ Value of sudo
 **UFW**  
 * UFW(Uncomplicated Firewall) is a software application responsible for ensuring that the system administrator can manage iptables in a simple way.    
 
+**SSH**  
+SSH(Secure Shell) is a network protocol that allows users to securely access and manage remote machines.
+
 **Cron**  
 Linux task manager that allows us to execute commands at a certain time. We can automate some tasks just by telling cron what command we want to run at a specific time.  
 
