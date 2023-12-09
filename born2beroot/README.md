@@ -18,7 +18,7 @@
 **APPArmor**  
 A security module in the Linux kernel that allows the system administrator to restrict the capabilities of a program.
 
-**SUDO**
+**SUDO**  
 Value of sudo
 * Increased security: By allowing non-root users to perform administrative tasks, sudo reduces the need for users to log in as root, which can help to protect the system from unauthorized access and malicious actions.  
 * Simplified administration: sudo simplifies system administration by allowing non-root users to perform tasks without the need to manually switch to the root user. This can save time and effort for system administrators.  
