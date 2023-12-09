@@ -25,7 +25,7 @@ Common port numbers
 21 - FTP (File Transfer Protocal: The standard protocol used to transfer files over a network)  
 25 - Email (SMTP) 
 
-**Evaluation Command**
+**Evaluation Command**  
 **Simple Setup**
 * Check UFW service is in use.  
 `sudo ufw status`  
@@ -49,3 +49,36 @@ Output meaning
 
 * Create a new user and show that it follows the password policy we have created.  
 `sudo adduser username`
+
+* Create a new group named "evaluating".  
+`sudo addgroup evaluating`  
+
+* Add the new user to the new group.  
+`sudo adduser username evaluating`  
+To verify that it has been entered correctly.  
+`getent group evaluating`  
+
+**Hostname and Partition**  
+* Check that the machine's hostname is correct login42.  
+`hostname`  
+
+* Modify hostname to replace your login with the evaluator's. In this case, we will replace it with student42.  
+`sudo nano /etc/hostname`  
+`sudo nano /etc/hosts`
+
+* Reboot the machine.
+`sudo reboot`
+
+* View the partition
+`lsblk`
+
+**SUDO**
+
+
+**UFW/Firewalld**
+
+**SSH**
+
+**Script Monitoring**
+
+**Bonus**
