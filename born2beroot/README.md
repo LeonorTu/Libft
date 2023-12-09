@@ -116,12 +116,12 @@ check that it is within the group.
 `sudo ufw delete allow 8080`
 
 **SSH**
-* Check that the ssh service is installed on the virtual machine, that it works correctly, and that it only works on port 4242.
-`which ssh`
-`sudo service ssh status`
+* Check that the ssh service is installed on the virtual machine, that it works correctly, and that it only works on port 4242.  
+`which ssh`  
+`sudo service ssh status`  
 
-* Use ssh to log in with the newly created user. Make sure that you cannot use ssh with the root user.
-`ssh username@localhost -p 4242`
+* Use ssh to log in with the newly created user. Make sure that you cannot use ssh with the root user.  
+`ssh username@localhost -p 4242`  
 `su -`
 
 **Script Monitoring**
