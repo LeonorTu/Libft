@@ -28,6 +28,9 @@ Common port numbers
 **WordPress**  
 A content management system focused on the creation of any type of website.  
 
+**Lighttpd**  
+A web server designed to be fast, secure, flexible, and standards-compliant. It is optimized for environments where speed is a top priority because it consumes less CPU and RAM than other servers.  
+
 **Mariadb**  
 A database used for various purposes, such as data warehousing, e-commerce, enterprise-level functions, and logging applications.  
 
