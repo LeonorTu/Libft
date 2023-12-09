@@ -40,10 +40,12 @@ Common port numbers
 `getent group sudo ` 
 `getent group user42`
 Output meaning
-`| Field | Description |
-|---|---|---|
-| sudo | Name of the group |
-| x | Group identifier (GID) |
-| 27 | Numerical identifier (GID) |
-| jtu | Member of the group |`
+| Field | Description |  
+|---|---|---|   
+| sudo | Name of the group |  
+| x | Group identifier (GID) |  
+| 27 | Numerical identifier (GID) |  
+| jtu | Member of the group |  
 
+* Create a new user and show that it follows the password policy we have created.  
+`sudo adduser username`
