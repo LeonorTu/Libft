@@ -108,12 +108,12 @@ check that it is within the group.
 `dpkg -s ufw`  
 `sudo service ufw status`  
 
-* List the active rules in UFW, if the bonus part is not done, the rule for port 4242 should only appear.
-`sudo ufw status`
+* List the active rules in UFW, if the bonus part is not done, the rule for port 4242 should only appear.  
+`sudo ufw status`  
 
-* Create a new rule for port 8080. Verify that it has been added to the active rules and then you can delete it.
-`sudo ufw allow 8080`
-`sudo ufw delete allow 8080`
+* Create a new rule for port 8080. Verify that it has been added to the active rules and then you can delete it.  
+`sudo ufw allow 8080`  
+`sudo ufw delete allow 8080`  
 
 **SSH**
 * Check that the ssh service is installed on the virtual machine, that it works correctly, and that it only works on port 4242.  
