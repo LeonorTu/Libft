@@ -86,9 +86,9 @@ To verify that it has been entered correctly.
 
 **SUDO**  
 * Check that sudo is installed.   
-`which sudo`
+`which sudo`  
 The dpkg command is used to manage packages in Debian-based Linux distributions.  
-`dpkg -s sudo`
+`dpkg -s sudo`  
 
 * Add the new user to the sudo group.  
 `sudo adduser username sudo`   
@@ -96,7 +96,7 @@ check that it is within the group.
 `getent group sudo`
 
 * Show the application of the rules imposed for sudo by the subject.  
-`nano /etc/sudoers.d/sudo_config`
+`nano /etc/sudoers.d/sudo_config`  
 
 * Show that the path /var/log/sudo/ exists and contains at least one file, in this we should see a history of the commands used with sudo.  
 `cd /var/log/sudo`  
