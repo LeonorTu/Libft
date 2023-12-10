@@ -145,7 +145,7 @@ check that it is within the group.
 
 **Script Monitoring**
 * Modify the runtime of the script from 10 minutes to 1.   
-`sudo crontab -u root -e`  
+`sudo crontab -u root -e`    
 * Make the script stop running when the server has started, but without modifying the script.  
 `sudo /etc/init.d/cron stop`  
 `sudo /etc/init.d/cron start`  
