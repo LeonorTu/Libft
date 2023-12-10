@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:39 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/01 14:27:49 by jtu              ###   ########.fr       */
+/*   Updated: 2023/12/05 18:40:30 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ static char	*read_to_stash(int fd, char *stash)
 	while (!ft_strchr(stash, '\n') && read_len != 0)
 	{
 		read_len = read(fd, buf, BUFFER_SIZE);
-		if ((!stash && read_len == 0) || read_len == -1)
+		if (read_len == -1)
 			return (free(buf), free(stash), NULL);
-		// if ()
-		// 	return (free(buf), stash);
+		else if (read_len == 0)
+		 	break ;
 		buf[read_len] = '\0';
 		stash = ft_strjoin(stash, buf);
 		if (!stash)
@@ -103,27 +103,27 @@ char	*get_next_line(int fd)
 		return (free(stash), NULL);
 	line = ft_get_line(stash);
 	// if (!line)
-	// 	return (free(stash), free(line), NULL);
+	// 	return (free(stash), NULL);
 	stash = stash_update(stash);
 	// if (!stash)
-	// 	return (free(stash), free(line), NULL);
+	//  	return (free(line), NULL);
 	return (line);
 }
 
-// #include <stdio.h>
-// #include <fcntl.h>
-// int	main(void)
-// {
-// 	char	*line;
-// 	int		i;
-// 	int		fd;
+/* #include <stdio.h>
+#include <fcntl.h>
+int	main(void)
+{
+	char	*line;
+	int		i;
+	int		fd;
 
-// 	i = 1;
-// 	fd = open("test2.txt", O_RDONLY);
+	i = 1;
+	fd = open("test2.txt", O_RDONLY);
 
-// 	while ((line = get_next_line(fd)))
-// 	{
-// 		printf("%d->%s\n", i++, line);
-// 		free(line);
-// 	}
-// }
+	while ((line = get_next_line(fd)))
+	{
+		printf("%d->%s\n", i++, line);
+		free(line);
+	}
+} */

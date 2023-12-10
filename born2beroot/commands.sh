@@ -1,5 +1,7 @@
 #check service state
+sudo service ufw status
 sudo service ssh status
+sudo service vsftpd status
 
 #restart SSH Server
 sudo systemctl restart ssh
@@ -32,3 +34,18 @@ sudo passwd <username>
 
 #chang sudo passwood
 sudo passwd
+
+#connect server to the web server
+ftp 10.0.2.15
+
+# find the current local directory
+!pwd
+
+# list the files in local directory
+!ls
+
+#add file to ftp server
+echo "Hello" | sudo tee test.txt
+#tee elevates privileges via sudo, writes to the file, or
+sudo sh -c 'echo "Hello" > test.txt'
+#runs the entire command (including the file redirection) with elevated privileges

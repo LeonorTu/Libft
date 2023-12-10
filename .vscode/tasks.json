@@ -9,7 +9,7 @@
                 "-fansi-escape-codes",
                 "-g",
                 //"${file}",
-                "./libft/libft.a",
+                //"./libft/libft.a",
                 "*.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
