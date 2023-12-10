@@ -150,7 +150,7 @@ check that it is within the group.
 `sudo /etc/init.d/cron stop`  
 `sudo /etc/init.d/cron start`  
 
-**Bonus**
+**Bonus**  
 FTP(File Transfer Protocal)  
 * connect server to the web server  
 `ftp 10.0.2.15`
