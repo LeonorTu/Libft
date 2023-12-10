@@ -51,32 +51,32 @@ A content management system focused on the creation of any type of website.
 A web server designed to be fast, secure, flexible, and standards-compliant. It is optimized for environments where speed is a top priority because it consumes less CPU and RAM than other servers.
 
 **Mariadb**
-A database used for various purposes, such as data warehousing, e-commerce, enterprise-level functions, and logging applications.
+A database used for various purposes, such as data warehousing, e-commerce, enterprise-level functions, and logging applications.  
 
 **PHP**
-A programming language used to develop dynamic web applications and interactive websites. PHP runs on the server side.
+A programming language used to develop dynamic web applications and interactive websites. PHP runs on the server side.  
 
-**Evaluation Command**
-**Simple Setup**
-* Check UFW service is in use.
-`sudo ufw status`
-`sudo service ufw status`
-* Check that the SSH service is in use.
-`sudo service ssh status`
-* Check that you are using the Debian or Centos operating system.
-`uname -v`
+**Evaluation Command**  
+**Simple Setup**  
+* Check UFW service is in use.  
+`sudo ufw status`  
+`sudo service ufw status`  
+* Check that the SSH service is in use.  
+`sudo service ssh status`  
+* Check that you are using the Debian or Centos operating system.  
+`uname -v`  
 
 **User**
-* Check that your user is within the "sudo" and "user42" groups.
-`getent group sudo`
-`getent group user42`
+* Check that your user is within the "sudo" and "user42" groups.  
+`getent group sudo`  
+`getent group user42`  
 Output meaning
-| Field | Description |
-|---|---|---|
-| sudo | Name of the group |
-| x | Group identifier (GID) |
-| 27 | Numerical identifier (GID) |
-| jtu | Member of the group |
+| Field | Description |  
+|---|---|---|  
+| sudo | Name of the group |  
+| x | Group identifier (GID) |  
+| 27 | Numerical identifier (GID) |  
+| jtu | Member of the group |  
 
 * Create a new user and show that it follows the password policy we have created.  
 `sudo adduser username`  
