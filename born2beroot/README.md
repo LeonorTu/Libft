@@ -1,17 +1,17 @@
-**Virtual Machine**
+**Virtual Machine**  
 * Allows multiple operating systems to run on physical machine.
 * Creates virtual operating system on top of other opearating system.
 * All virtual machines are isolated and they share the resouces of the physical machine.
 * If something breaks iside VM, it doesn't affect the host machine.
-**Benefits**
+**Benefits**  
 * Learn and experiment
 * Test your app on different OS
 
-**Debian vs Rocky**
+**Debian vs Rocky**  
 * Debian is maintained by non-profit community. It uses AppArmor as its primary mandatory access control system which is easier to set up and manage.
 * Rocky is based on Red Hat Enterprise Linux (enterprise operating system).
 
-**Aptitude vs Apt**
+**Aptitude vs Apt**  
 * APT is a lower-level package manager and Aptitude is a high-level package manager.
 * APT is gommand-line tool which is text-base and Aptitude is graphical user interface which is more user-friendly.
 
@@ -21,20 +21,20 @@ A security module in the Linux kernel that allows the system administrator to re
 **LVM**   
 LVM(Logical Volume Manager) is an abstraction layer between a storage device and a file system.   
 
-**SUDO**
+**SUDO**  
 * sudo (superuser do) is a command in Linux and Unix-like operating systems that allows users to run commands with the privileges of another user, most commonly the root user.  
 Value of sudo  
 * Increased security: By allowing non-root users to perform administrative tasks, sudo reduces the need for users to log in as root, which can help to protect the system from unauthorized access and malicious actions.
 * Simplified administration: sudo simplifies system administration by allowing non-root users to perform tasks without the need to manually switch to the root user. This can save time and effort for system administrators.
 * Increased accountability: When non-root users run commands with sudo, their actions are logged, which can help to track who performed specific system changes and when they were made. This can aid in troubleshooting and identifying potential security issues.
 
-**UFW**
+**UFW**  
 * UFW(Uncomplicated Firewall) is a software application responsible for ensuring that the system administrator can manage iptables in a simple way.
 
-**SSH**
+**SSH**  
 SSH(Secure Shell) is a network protocol that allows users to securely access and manage remote machines.
 
-**Cron**
+**Cron**  
 Linux task manager that allows us to execute commands at a certain time. We can automate some tasks just by telling cron what command we want to run at a specific time.
 
 **Port**  
@@ -44,16 +44,16 @@ Common port numbers
 * 21 - FTP (File Transfer Protocal: The standard protocol used to transfer files over a network)  
 * 25 - Email (SMTP)  
 
-**WordPress**
+**WordPress**  
 A content management system focused on the creation of any type of website.
 
-**Lighttpd**
+**Lighttpd**  
 A web server designed to be fast, secure, flexible, and standards-compliant. It is optimized for environments where speed is a top priority because it consumes less CPU and RAM than other servers.
 
-**Mariadb**
+**Mariadb**  
 A database used for various purposes, such as data warehousing, e-commerce, enterprise-level functions, and logging applications.  
 
-**PHP**
+**PHP**  
 A programming language used to develop dynamic web applications and interactive websites. PHP runs on the server side.  
 
 **Evaluation Command**  
