@@ -109,7 +109,7 @@ To verify that it has been entered correctly.
 The dpkg command is used to manage packages in Debian-based Linux distributions.  
 `dpkg -s sudo`  
 
-* Add the new user to the sudo group.
+* Add the new user to the sudo group.  
 `sudo adduser username sudo`  
 check that it is within the group.  
 `getent group sudo`  
