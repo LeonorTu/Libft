@@ -69,8 +69,8 @@ A programming language used to develop dynamic web applications and interactive 
 **User**
 * Check that your user is within the "sudo" and "user42" groups.  
 `getent group sudo`  
-`getent group user42`  
-Output meaning
+`getent group user42`   
+Output meaning  
 | Field | Description |  
 |---|---|---|  
 | sudo | Name of the group |  
