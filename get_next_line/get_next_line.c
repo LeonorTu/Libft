@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:39 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/05 18:40:30 by jtu              ###   ########.fr       */
+/*   Updated: 2023/12/10 14:59:48 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,22 @@ static char	*read_to_stash(int fd, char *stash)
 	{
 		read_len = read(fd, buf, BUFFER_SIZE);
 		if (read_len == -1)
-			return (free(buf), free(stash), NULL);
+		{
+			free(buf);
+			return (NULL);
+		}
 		else if (read_len == 0)
-		 	break ;
+			break ;
 		buf[read_len] = '\0';
 		stash = ft_strjoin(stash, buf);
 		if (!stash)
-			return (free(buf), NULL);
+		{
+			free(buf);
+			return (NULL);
+		}
 	}
-	return (free(buf), stash);
+	free(buf);
+	return (stash);
 }
 
 char	*get_next_line(int fd)
@@ -100,30 +107,33 @@ char	*get_next_line(int fd)
 		return (NULL);
 	stash = read_to_stash(fd, stash);
 	if (!stash || !*stash)
-		return (free(stash), NULL);
+	{
+		free(stash);
+		return (NULL);
+	}
 	line = ft_get_line(stash);
-	// if (!line)
-	// 	return (free(stash), NULL);
 	stash = stash_update(stash);
-	// if (!stash)
-	//  	return (free(line), NULL);
 	return (line);
 }
 
-/* #include <stdio.h>
-#include <fcntl.h>
-int	main(void)
-{
-	char	*line;
-	int		i;
-	int		fd;
+// #include <stdio.h>
+// #include <fcntl.h>
+// int	main(void)
+// {
+// 	char	*line;
+// 	int		i;
+// 	int		fd;
 
-	i = 1;
-	fd = open("test2.txt", O_RDONLY);
+// 	i = 1;
+// 	fd = open("test1.txt", O_RDONLY);
 
-	while ((line = get_next_line(fd)))
-	{
-		printf("%d->%s\n", i++, line);
-		free(line);
-	}
-} */
+// 	line = get_next_line(fd);
+// 	line = get_next_line(fd);
+// 	line = get_next_line(fd);
+// 	printf("%p",line);
+// 	// while ((line = get_next_line(fd)))
+// 	// {
+// 	// 	printf("%d->%s\n", i++, line);
+// 	// 	free(line);
+// 	// }
+// }
