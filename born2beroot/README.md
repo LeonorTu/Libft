@@ -37,12 +37,12 @@ SSH(Secure Shell) is a network protocol that allows users to securely access and
 **Cron**
 Linux task manager that allows us to execute commands at a certain time. We can automate some tasks just by telling cron what command we want to run at a specific time.
 
-**Port**
-Range: 0-65535 (0-1023: System or well-known ports)
-Common port numbers
-* 80, 443 - Web pages (HTTP (Hypertext Transfer Protocol), HTTPS (Hypertext Transfer Protocol Secure))
-* 21 - FTP (File Transfer Protocal: The standard protocol used to transfer files over a network)
-* 25 - Email (SMTP)
+**Port**  
+Range: 0-65535 (0-1023: System or well-known ports)  
+Common port numbers  
+* 80, 443 - Web pages (HTTP (Hypertext Transfer Protocol), HTTPS (Hypertext Transfer Protocol Secure))  
+* 21 - FTP (File Transfer Protocal: The standard protocol used to transfer files over a network)  
+* 25 - Email (SMTP)  
 
 **WordPress**
 A content management system focused on the creation of any type of website.
