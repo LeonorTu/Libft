@@ -1,4 +1,3 @@
-**For Evaluation**  
 **Virtual Machine**
 * Allows multiple operating systems to run on physical machine.
 * Creates virtual operating system on top of other opearating system.
@@ -16,8 +15,11 @@
 * APT is a lower-level package manager and Aptitude is a high-level package manager.
 * APT is gommand-line tool which is text-base and Aptitude is graphical user interface which is more user-friendly.
 
-**APPArmor**
+**APPArmor**  
 A security module in the Linux kernel that allows the system administrator to restrict the capabilities of a program.
+
+**LVM**   
+LVM(Logical Volume Manager) is an abstraction layer between a storage device and a file system.   
 
 **SUDO**
 * sudo (superuser do) is a command in Linux and Unix-like operating systems that allows users to run commands with the privileges of another user, most commonly the root user.
