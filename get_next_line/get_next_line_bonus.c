@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:39 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/15 15:00:54 by jtu              ###   ########.fr       */
+/*   Updated: 2023/12/15 15:56:02 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static int	ft_get_line(char **stash, char **line)
 	int		i;
 
 	i = 0;
-	if (!*stash)
-		return (0);
 	while ((*stash)[i] && (*stash)[i] != '\n')
 		i++;
 	if ((*stash)[i] == '\n')
@@ -89,7 +87,7 @@ char	*get_next_line(int fd)
 	int			status;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		if (stash[fd])
 			ft_free(&stash[fd]);
