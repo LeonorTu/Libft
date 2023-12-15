@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:39 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/15 15:00:28 by jtu              ###   ########.fr       */
+/*   Updated: 2023/12/15 15:00:54 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_free(char **str)
 {
@@ -32,6 +32,8 @@ static int	ft_get_line(char **stash, char **line)
 	int		i;
 
 	i = 0;
+	if (!*stash)
+		return (0);
 	while ((*stash)[i] && (*stash)[i] != '\n')
 		i++;
 	if ((*stash)[i] == '\n')
@@ -82,26 +84,27 @@ static int	read_to_stash(int fd, char **stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash[OPEN_MAX];
 	char		*line;
 	int			status;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		if (stash)
-			ft_free(&stash);
+		if (stash[fd])
+			ft_free(&stash[fd]);
 		return (NULL);
 	}
-	status = read_to_stash(fd, &stash);
-	if (!stash || !*stash || status < 0 || ft_get_line(&stash, &line) < 0)
-		return (ft_free(&stash));
+	status = read_to_stash(fd, &stash[fd]);
+	if (!stash[fd] || !*stash[fd] || status < 0
+		|| ft_get_line(&stash[fd], &line) < 0)
+		return (ft_free(&stash[fd]));
 	if (line)
 		return (line);
-	if (stash && *stash != '\0')
+	if (stash[fd] && *stash[fd] != '\0')
 	{
-		line = ft_strdup(stash);
-		ft_free(&stash);
+		line = ft_strdup(stash[fd]);
+		ft_free(&stash[fd]);
 	}
 	return (line);
 }
