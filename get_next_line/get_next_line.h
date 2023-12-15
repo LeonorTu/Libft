@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:52 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/30 20:54:29 by jtu              ###   ########.fr       */
+/*   Updated: 2023/12/15 15:58:09 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-//char	*read_to_stash(int fd, char *stash);
-//char	*ft_get_line(char *stash);
-//char	*stash_update(char *stash);
+char	*ft_substr(char const *s, int start, int len);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *stash, char *buf);
-int	ft_strlen(const char *str);
+char	*ft_strdup(const char *src);
+int		ft_strlen(const char *str);
 
 #endif
