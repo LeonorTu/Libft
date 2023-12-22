@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 15:56:50 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/22 19:35:50 by jtu              ###   ########.fr       */
+/*   Created: 2023/10/25 14:47:29 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 18:14:01 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "./libft/libft.h"
-# include <stdbool.h>
-# include <stdlib.h>
-# include <limits.h>
-
-typedef struct s_stack{
-	int	value;
-	s_stack *prev;
-	s_stack *next;
-}	t_stack;
-
-// Errors handling
-
-// Commands
-void ft_sa();
-
-// Algorithms
-
-#endif
+/**
+ * The isascii() function tests for an ASCII character, which
+ * is any character between 0 and octal 0177 inclusive.
+ */
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}

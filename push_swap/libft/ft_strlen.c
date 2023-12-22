@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 15:56:50 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/22 19:35:50 by jtu              ###   ########.fr       */
+/*   Created: 2023/08/17 10:30:50 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 19:01:45 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdbool.h>
-# include <stdlib.h>
-# include <limits.h>
+/**
+ * The strlen() function computes the length of the string s.
+ * The strnlen() function attempts to compute the length of s,
+ * but never scans beyond the first maxlen bytes of s.
+ */
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
-typedef struct s_stack{
-	int	value;
-	s_stack *prev;
-	s_stack *next;
-}	t_stack;
-
-// Errors handling
-
-// Commands
-void ft_sa();
-
-// Algorithms
-
-#endif
+	i = 0;
+	while (str[i])
+		i ++;
+	return (i);
+}

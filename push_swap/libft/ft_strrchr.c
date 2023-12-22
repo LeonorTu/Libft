@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 15:56:50 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/22 19:35:50 by jtu              ###   ########.fr       */
+/*   Created: 2023/10/25 15:47:18 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 19:11:09 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdbool.h>
-# include <stdlib.h>
-# include <limits.h>
+/**
+ * The strrchr() function returns a pointer to the last
+ * occurrence of the character c in the string s.
+ */
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
 
-typedef struct s_stack{
-	int	value;
-	s_stack *prev;
-	s_stack *next;
-}	t_stack;
-
-// Errors handling
-
-// Commands
-void ft_sa();
-
-// Algorithms
-
-#endif
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if ((char)c == s[i])
+			return ((char *)(s + i));
+		i--;
+	}
+	return (NULL);
+}

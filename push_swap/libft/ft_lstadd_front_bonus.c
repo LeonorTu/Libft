@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 15:56:50 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/22 19:35:50 by jtu              ###   ########.fr       */
+/*   Created: 2023/11/01 16:47:30 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 18:14:59 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdbool.h>
-# include <stdlib.h>
-# include <limits.h>
-
-typedef struct s_stack{
-	int	value;
-	s_stack *prev;
-	s_stack *next;
-}	t_stack;
-
-// Errors handling
-
-// Commands
-void ft_sa();
-
-// Algorithms
-
-#endif
+/**
+ * Adds the node ’new’ at the beginning of the list.
+ */
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}

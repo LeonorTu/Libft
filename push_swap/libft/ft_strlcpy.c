@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 15:56:50 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/22 19:35:50 by jtu              ###   ########.fr       */
+/*   Created: 2023/10/25 14:48:39 by jtu               #+#    #+#             */
+/*   Updated: 2023/11/14 19:03:18 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdbool.h>
-# include <stdlib.h>
-# include <limits.h>
+/**
+ * strlcpy() copies up to dstsize - 1 characters from the
+ * string src to dst, NUL-terminating the result if dstsize
+ * is not 0.
+ */
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
 
-typedef struct s_stack{
-	int	value;
-	s_stack *prev;
-	s_stack *next;
-}	t_stack;
-
-// Errors handling
-
-// Commands
-void ft_sa();
-
-// Algorithms
-
-#endif
+	i = 0;
+	while (src[i])
+		i++;
+	if (dstsize == 0)
+		return (i);
+	while (--dstsize && *src)
+		*dst++ = *src++;
+	*dst = 0;
+	return (i);
+}
