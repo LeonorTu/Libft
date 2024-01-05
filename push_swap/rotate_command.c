@@ -6,18 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 17:53:18 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/30 20:01:15 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/05 16:13:22 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*last_node(t_stack **stack)
-{
-	while ((*stack)->next)
-		*stack = (*stack)->next;
-	return (*stack);
-}
 
 void	rotate_stack(t_stack **stack)
 {
