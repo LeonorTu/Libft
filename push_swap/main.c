@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:25:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/05 16:12:00 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/08 11:17:31 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_stack(t_stack **stack, char **argv)
 
 t_stack	*find_biggest(t_stack *stack)
 {
-	int	biggest;
+	int		biggest;
 	t_stack	*biggest_node;
 
 	biggest = INT_MIN;
@@ -75,17 +75,53 @@ t_stack	*find_biggest(t_stack *stack)
 	return (biggest_node);
 }
 
-void	small_sort(t_stack **a)
+t_stack	*find_smallest(t_stack *stack)
 {
-	t_stack	*biggest_node;
+	int		smallest;
+	t_stack	*smallest_node;
 
-	biggest_node = find_biggest(*a);
-	if (*a == biggest_node)
-		ra(a);
-	else if ((*a)->next == biggest_node)
-		rra(a);
-	if ((*a)->value > (*a)->next->value)
-		sa(a);
+	smallest = INT_MAX;
+	while (stack)
+	{
+		if (stack->value < smallest)
+		{
+			smallest = stack->value;
+			smallest_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (smallest_node);
+}
+
+t_stack* stack_copy(const t_stack *stack)
+{
+	t_stack	*copy;
+
+	if (!stack)
+		return NULL;
+	copy = malloc(sizeof(t_stack));
+	copy->value = stack->value;
+	copy->next = stack_copy(stack->next);
+	return (copy);
+}
+
+
+t_stack	*find_median(t_stack *stack)
+{
+	int		len;
+	int		i;
+	t_stack	*sorted_stack;
+
+	sorted_stack = stack_copy(stack);
+	quick_sort(sorted_stack, last_node(&sorted_stack));
+	len = stack_len(sorted_stack);
+	i = 0;
+	while (i < len / 2)
+	{
+		sorted_stack = sorted_stack->next;
+		i++;
+	}
+	return (sorted_stack);
 }
 
 int	main(int argc, char **argv)
@@ -112,15 +148,21 @@ int	main(int argc, char **argv)
 		if (stack_len(a) == 2)
 			sa(&a);
 		else if (stack_len(a) == 3)
-			small_sort(&a);
-		// else
-		// 	push_swap(&a, &b);
+			sort_three(&a);
+		else
+			push_swap(&a, &b);
 	}
 
 	// while (a != NULL) //
 	// {
-	// 	printf("the value of the node: %d\n", a->value);
+	// 	printf("the value of the a node: %d\n", a->value);
 	// 	a = a->next;
+	// }
+
+	// while (b != NULL) //
+	// {
+	// 	printf("the value of the b node: %d\n", b->value);
+	// 	b = b->next;
 	// }
 
 	free_stack(&a);

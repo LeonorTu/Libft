@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:56:50 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/30 20:03:12 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/08 14:59:31 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,22 @@
 # include <stdlib.h>
 # include <limits.h>
 
-typedef struct s_stack{
+typedef struct s_stack
+{
 	int	value;
 	struct s_stack *next;
 }	t_stack;
+
+typedef struct s_moves
+{
+	int	nra;
+	int	nrb;
+	int	nrr;
+	int	nrra;
+	int	nrrb;
+	int	nrrr;
+	int	total;
+}	t_moves;
 
 // Errors handling
 void	free_stack(t_stack **stack);
@@ -36,11 +48,13 @@ void	init_stack(t_stack **stack, char **argv);
 // Stack util
 bool	stack_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
-void	swap_node(t_stack **stack);
 t_stack	*last_node(t_stack **stack);
+void	swap_node(t_stack **stack);
 void	rotate_stack(t_stack **stack);
 void	reverse_rotate_stack(t_stack **stack);
 void	push(t_stack **dst, t_stack **src);
+t_stack	*find_biggest(t_stack *stack);
+t_stack	*find_smallest(t_stack *stack);
 
 // Commands
 void	pa(t_stack **a, t_stack **b);
@@ -56,5 +70,11 @@ void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 
 // Algorithms
+t_stack	*find_median(t_stack *stack);
+void	push_median(t_stack	**a, t_stack **b);
+void	sort_three(t_stack **a);
+void	sort_four(t_stack **a, t_stack **b);
+void	quick_sort(t_stack *head, t_stack *tail);
+void	push_swap(t_stack **a, t_stack **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:09:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/05 16:13:34 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/07 18:47:44 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ int	stack_len(t_stack *stack)
 
 t_stack	*last_node(t_stack **stack)
 {
-	while ((*stack)->next)
-		*stack = (*stack)->next;
-	return (*stack);
+	t_stack	*temp;
+
+	temp = *stack;
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
 }
+
