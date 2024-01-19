@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:25:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/08 11:17:31 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/19 20:45:14 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,7 @@ t_stack* stack_copy(const t_stack *stack)
 	return (copy);
 }
 
-
-t_stack	*find_median(t_stack *stack)
+t_values	*find_values(t_stack *stack, t_values *values)
 {
 	int		len;
 	int		i;
@@ -115,13 +114,24 @@ t_stack	*find_median(t_stack *stack)
 	sorted_stack = stack_copy(stack);
 	quick_sort(sorted_stack, last_node(&sorted_stack));
 	len = stack_len(sorted_stack);
-	i = 0;
-	while (i < len / 2)
+	values->min = sorted_stack->value;
+	i = -1;
+	while (++i < len)
 	{
+		if (i == len / 2 + len % 2 - 1)
+			values->median = sorted_stack->value;
+		if (i == len - 2)
+			values->max2 = sorted_stack->value;
+		if (i == len - 3)
+			values->max3 = sorted_stack->value;
+		if (i == len - 4)
+			values->max4 = sorted_stack->value;
+		if (i == len - 5)
+			values->max5 = sorted_stack->value;
 		sorted_stack = sorted_stack->next;
-		i++;
 	}
-	return (sorted_stack);
+	values->max1 = sorted_stack->value;
+	return (values);
 }
 
 int	main(int argc, char **argv)
@@ -149,6 +159,10 @@ int	main(int argc, char **argv)
 			sa(&a);
 		else if (stack_len(a) == 3)
 			sort_three(&a);
+		else if (stack_len(a) == 4)
+			sort_four(&a, &b);
+		else if (stack_len(a) == 5)
+			sort_five(&a, &b);
 		else
 			push_swap(&a, &b);
 	}
@@ -165,7 +179,7 @@ int	main(int argc, char **argv)
 	// 	b = b->next;
 	// }
 
-	free_stack(&a);
-	free_stack(&b);
+	// free_stack(&a);
+	// free_stack(&b);
 	return (0);
 }
