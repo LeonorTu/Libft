@@ -53,13 +53,19 @@ OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
 
+bonus: .bonus
+
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
-	ar rcs ${NAME} $@
 
 ${NAME}: ${OBJS}
+	ar rcs $@ $^
 
-bonus: ${OBJS} ${BONUS_OBJS}
+bonus: .bonus
+
+.bonus: ${OBJS} ${BONUS_OBJS}
+	ar -rcs $(NAME) $^
+	@touch .bonus
 
 clean:
 	rm -f ${OBJS} ${BONUS_OBJS}
