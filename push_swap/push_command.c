@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 17:57:02 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/30 20:02:21 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/24 14:01:00 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	push(t_stack **dst, t_stack **src)
 
 	if (!*src)
 		return ;
+
 	first_node = *src;
 	*src = (*src)->next;
 	if (*dst)
@@ -34,6 +35,7 @@ void	push(t_stack **dst, t_stack **src)
 
 void	pa(t_stack **a, t_stack **b)
 {
+
 	push(a, b);
 	write(1, "pa\n", 3);
 }

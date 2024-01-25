@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:25:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/19 20:45:14 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/25 19:20:20 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ long	ft_atoi_long(const char *str)
 	return (sign * value);
 }
 
-void	init_stack(t_stack **stack, char **argv)
+void	init_stack(t_stack **stack, char **argv, int argc)
 {
 	int	i;
 	long	n;
@@ -55,6 +55,20 @@ void	init_stack(t_stack **stack, char **argv)
 		add_node(stack, n);
 		i++;
 	}
+	if (argc == 2)
+		free_array(argv);
+}
+
+void	free_array(char **argv)
+{
+	int	i;
+
+	if (!argv || !*argv)
+		return ;
+	i = -1;
+	while (argv[i])
+		free(argv[i++]);
+	free(argv-1);
 }
 
 t_stack	*find_biggest(t_stack *stack)
@@ -93,45 +107,18 @@ t_stack	*find_smallest(t_stack *stack)
 	return (smallest_node);
 }
 
-t_stack* stack_copy(const t_stack *stack)
+t_stack	*stack_copy(const t_stack *stack)
 {
 	t_stack	*copy;
 
 	if (!stack)
-		return NULL;
-	copy = malloc(sizeof(t_stack));
+		return (NULL);
+	copy = malloc(sizeof(t_stack)); // leaks here
+	if (!copy)
+		return (NULL);
 	copy->value = stack->value;
 	copy->next = stack_copy(stack->next);
 	return (copy);
-}
-
-t_values	*find_values(t_stack *stack, t_values *values)
-{
-	int		len;
-	int		i;
-	t_stack	*sorted_stack;
-
-	sorted_stack = stack_copy(stack);
-	quick_sort(sorted_stack, last_node(&sorted_stack));
-	len = stack_len(sorted_stack);
-	values->min = sorted_stack->value;
-	i = -1;
-	while (++i < len)
-	{
-		if (i == len / 2 + len % 2 - 1)
-			values->median = sorted_stack->value;
-		if (i == len - 2)
-			values->max2 = sorted_stack->value;
-		if (i == len - 3)
-			values->max3 = sorted_stack->value;
-		if (i == len - 4)
-			values->max4 = sorted_stack->value;
-		if (i == len - 5)
-			values->max5 = sorted_stack->value;
-		sorted_stack = sorted_stack->next;
-	}
-	values->max1 = sorted_stack->value;
-	return (values);
 }
 
 int	main(int argc, char **argv)
@@ -149,10 +136,10 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		init_stack(&a, argv);
+		init_stack(&a, argv, argc);
 	}
 	else
-		init_stack(&a, argv + 1);
+		init_stack(&a, argv + 1, argc);
 	if (!stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -166,20 +153,7 @@ int	main(int argc, char **argv)
 		else
 			push_swap(&a, &b);
 	}
-
-	// while (a != NULL) //
-	// {
-	// 	printf("the value of the a node: %d\n", a->value);
-	// 	a = a->next;
-	// }
-
-	// while (b != NULL) //
-	// {
-	// 	printf("the value of the b node: %d\n", b->value);
-	// 	b = b->next;
-	// }
-
-	// free_stack(&a);
-	// free_stack(&b);
+	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }

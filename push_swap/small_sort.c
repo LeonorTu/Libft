@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:26:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/08 13:00:51 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/24 16:03:22 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	sort_three(t_stack **a)
 		rra(a);
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
-	free(biggest_node);
 }
 
 void	sort_four(t_stack **a, t_stack **b)
@@ -33,7 +32,7 @@ void	sort_four(t_stack **a, t_stack **b)
 	if (stack_sorted(*a))
 		return ;
 	smallest_node = find_smallest(*a);
-	if (last_node(*a) == smallest_node)
+	if (last_node(a) == smallest_node)
 		rra(a);
 	while (*a != smallest_node)
 		ra(a);
@@ -49,11 +48,11 @@ void	sort_five(t_stack **a, t_stack **b)
 	t_stack	*smallest_node;
 	t_stack	*temp;
 
-	temp = *a;
-	if (stack_sorted(temp))
+	if (stack_sorted(*a))
 		return ;
+	temp = *a;
 	smallest_node = find_smallest(temp);
-	if (last_node(temp) == smallest_node)
+	if (last_node(&temp) == smallest_node)
 		rra(a);
 	else if (temp->next == smallest_node)
 		ra(a);
@@ -65,7 +64,7 @@ void	sort_five(t_stack **a, t_stack **b)
 			ra(a);
 			ra(a);
 		}
-		else
+		else if (temp->next->next == smallest_node)
 		{
 			rra(a);
 			rra(a);
