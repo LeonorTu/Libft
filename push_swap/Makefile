@@ -1,35 +1,30 @@
 NAME = push_swap
 
+NAME_BONUS = checker
+
 LIBFT_NAME = libft.a
 
-SRCS = main.c \
-		push_swap.c \
-		push_command.c \
-		swap_command.c \
-		rotate_command.c \
-		reverse_rotate_command.c \
-		error_handler.c \
-		stack_utils.c \
-		best_moves.c \
-		small_sort.c \
-		quick_sort.c
+SRCS = $(wildcard *.c)
 
-CFLAGS = -Wall -Wextra -Werror
+SRCS_BONUS = $(filter-out main.c, $(wildcard *.c)) $(wildcard bonus/*.c)
 
-BONUS_OBJS = ${BONUS_SRCS:.c=.o}
+CFLAGS = -Wall -Wextra -Werror -g #remove -g
 
 all: ${NAME}
 
-${NAME}: ${OBJS}
-	make -C libft/ bonus
-	cc $(CFLAGS) $(SRCS) -o $@ -L./libft -lft
+${NAME}: ${SRCS}
+	make -C libft/
+	cc $(CFLAGS) $^ -o $@ -L./libft -lft
+
+bonus: ${SRCS_BONUS}
+	make -C libft/
+	cc $(CFLAGS) $^ -o $(NAME_BONUS) -L./libft -lft
 
 clean:
-	rm -f ${OBJS}
 	make clean -C libft
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f ${NAME} ${NAME_BONUS}
 	make fclean -C libft
 
 re: fclean all

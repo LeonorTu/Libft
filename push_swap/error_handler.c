@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 20:05:40 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/24 16:24:55 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/29 17:15:44 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 void	free_stack(t_stack **stack)
 {
-	if (!stack || !(*stack))
+	t_stack	*tmp;
+	t_stack	*current;
+
+	if (!stack)
 		return ;
-	free_stack(&((*stack)->next));
-	free(*stack);
+	current = *stack;
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
 	*stack = NULL;
 }
 

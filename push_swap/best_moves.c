@@ -6,12 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:09:38 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/25 18:37:43 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/30 10:37:50 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-# include <stdio.h> //
 
 int	next_number(int n, t_stack *a)
 {

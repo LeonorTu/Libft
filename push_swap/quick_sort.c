@@ -6,12 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:09:11 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/07 19:00:55 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/30 10:38:19 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> //
 
 t_stack	*partition(t_stack *head, t_stack *tail)
 {

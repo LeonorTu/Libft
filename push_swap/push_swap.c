@@ -6,12 +6,12 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:25:40 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/25 19:22:36 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/30 11:12:01 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> //
+
 void	push_median(t_stack	**a, t_stack **b, t_values *values)
 {
 	t_stack	*temp;
@@ -29,15 +29,15 @@ void	push_median(t_stack	**a, t_stack **b, t_values *values)
 	if (i <= len - i)
 	{
 		while (i--)
-			ra(a);
+			ra(a, false);
 	}
 	else
 	{
 		i = len - i;
 		while (i--)
-			rra(a);
+			rra(a, false);
 	}
-	pb(a, b);
+	pb(a, b, false);
 }
 
 int	max_value(int n, t_values *values)
@@ -57,12 +57,12 @@ void	push_a2b(t_stack **a, t_stack **b, t_values *values)
 	{
 		if (!max_value((*a)->value, values))
 		{
-			pb(a, b);
+			pb(a, b, false);
 			if ((*b)->value > values->median)
-				rb(b);
+				rb(b, false);
 		}
 		else
-			ra(a);
+			ra(a, false);
 	}
 }
 
@@ -80,18 +80,18 @@ void	init_moves(t_moves *moves)
 void	apply_best_moves(t_stack **a, t_stack **b, t_moves *best_moves)
 {
 	while (best_moves->nrr--)
-		rr(a, b);
+		rr(a, b, false);
 	while (best_moves->nrrr--)
-		rrr(a, b);
+		rrr(a, b, false);
 	while (best_moves->nrrb--)
-		rrb(b);
+		rrb(b, false);
 	while (best_moves->nrb--)
-		rb(b);
+		rb(b, false);
 	while (best_moves->nra--)
-		ra(a);
+		ra(a, false);
 	while (best_moves->nrra--)
-		rra(a);
-	pa(a, b);
+		rra(a, false);
+	pa(a, b, false);
 }
 
 void	push_b2a(t_stack **a, t_stack **b, t_values *values)
@@ -123,23 +123,25 @@ void	push_b2a(t_stack **a, t_stack **b, t_values *values)
 	len_a = stack_len(*a);
 	if (i <= len_a - i)
 		while (i--)
-			ra(a);
+			ra(a, false);
 	else
 	{
 		i = len_a - i;
 		while (i--)
-			rra(a);
+			rra(a, false);
 	}
 	free(best_moves);
 }
 
-t_values	*find_values(t_stack *stack, t_values *values)
+void	find_values(t_stack *stack, t_values *values)
 {
 	int		len;
 	int		i;
 	t_stack	*sorted_stack;
+	t_stack	*temp;
 
 	sorted_stack = stack_copy(stack);
+	temp = sorted_stack;
 	quick_sort(sorted_stack, last_node(&sorted_stack));
 	len = stack_len(sorted_stack);
 	values->min = sorted_stack->value;
@@ -159,8 +161,7 @@ t_values	*find_values(t_stack *stack, t_values *values)
 		sorted_stack = sorted_stack->next;
 	}
 	values->max1 = sorted_stack->value;
-	free_stack(&sorted_stack);
-	return (values);
+	free_stack(&temp);
 }
 
 void	push_swap(t_stack **a, t_stack **b)
@@ -173,7 +174,7 @@ void	push_swap(t_stack **a, t_stack **b)
 		free_stack(a);
 		free_stack(b);
 	}
-	values = find_values(*a, values);
+	find_values(*a, values);
 	push_median(a, b, values);
 	push_a2b(a, b, values);
 	if (stack_len(*a) == 4)

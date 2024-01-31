@@ -6,13 +6,13 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 17:57:02 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/24 14:01:00 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/30 11:07:11 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **dst, t_stack **src)
+void	push_node(t_stack **dst, t_stack **src)
 {
 	t_stack	*first_node;
 
@@ -33,15 +33,17 @@ void	push(t_stack **dst, t_stack **src)
 	}
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, bool checker)
 {
 
-	push(a, b);
-	write(1, "pa\n", 3);
+	push_node(a, b);
+	if (!checker)
+		write(1, "pa\n", 3);
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b, bool checker)
 {
-	push(b, a);
-	write(1, "pb\n", 3);
+	push_node(b, a);
+	if (!checker)
+		write(1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 17:54:36 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/30 20:41:28 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/30 11:07:48 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,24 @@ void	reverse_rotate_stack(t_stack **stack)
 	*stack = last;
 }
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, bool checker)
 {
 	reverse_rotate_stack(a);
-	write(1, "rra\n", 4);
+	if (!checker)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, bool checker)
 {
 	reverse_rotate_stack(b);
-	write(1, "rrb\n", 4);
+	if (!checker)
+		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, bool checker)
 {
 	reverse_rotate_stack(a);
 	reverse_rotate_stack(b);
-	write(1, "rrr\n", 4);
+	if (!checker)
+		write(1, "rrr\n", 4);
 }

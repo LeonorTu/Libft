@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 17:55:46 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/30 19:04:50 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/30 11:08:44 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,24 @@ void	swap_node(t_stack **stack)
 	(*stack)->next = temp;
 }
 
-void	sa(t_stack **a)
+void	sa(t_stack **a, bool checker)
 {
 	swap_node(a);
-	write(1, "sa\n", 3);
+	if (!checker)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **b)
+void	sb(t_stack **b, bool checker)
 {
 	swap_node(b);
-	write(1, "sb\n", 3);
+	if (!checker)
+		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, bool checker)
 {
 	swap_node(a);
 	swap_node(b);
-	write(1, "ss\n", 3);
+	if (!checker)
+		write(1, "ss\n", 3);
 }

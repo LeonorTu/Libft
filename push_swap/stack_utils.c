@@ -6,24 +6,11 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:09:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/25 18:38:57 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/31 15:19:35 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-bool	stack_sorted(t_stack *stack)
-{
-	if (stack == NULL)
-		return (1);
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
-}
 
 void	add_node(t_stack **stack, int n)
 {
@@ -32,7 +19,7 @@ void	add_node(t_stack **stack, int n)
 
 	if (!stack)
 		return ;
-	new_node = malloc(sizeof(t_stack));  // no leaks here
+	new_node = malloc(sizeof(t_stack));  // leaks here
 	if (!new_node)
 		return ;
 	new_node->value = n;
@@ -61,13 +48,16 @@ int	stack_len(t_stack *stack)
 	return (len);
 }
 
-t_stack	*last_node(t_stack **stack)
+t_stack	*stack_copy(const t_stack *stack)
 {
-	t_stack	*temp;
+	t_stack	*copy;
 
-	temp = *stack;
-	while (temp->next)
-		temp = temp->next;
-	return (temp);
+	if (!stack)
+		return (NULL);
+	copy = malloc(sizeof(t_stack)); // no leaks here
+	if (!copy)
+		return (NULL);
+	copy->value = stack->value;
+	copy->next = stack_copy(stack->next);
+	return (copy);
 }
-
