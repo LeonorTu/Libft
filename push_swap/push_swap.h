@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:56:50 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/01 13:09:13 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/01 13:54:18 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,6 @@ void	quick_sort(t_stack *head, t_stack *tail);
 void	calculate_best_moves(t_stack **a, t_stack **b, t_values \
 *values, t_moves *best_moves);
 void	apply_best_moves(t_stack **a, t_stack **b, t_moves *best_moves);
-void	move_min1(t_stack **a, t_stack *stack, t_stack *min);
-void	move_min2(t_stack **a, t_values *values, t_moves *best_moves);
 int		count_bm(t_moves *best_moves);
 void	copy_best_moves(t_moves *best_moves, t_moves *best_moves_temp);
 

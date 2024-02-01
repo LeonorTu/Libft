@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:25:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/31 18:37:28 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/01 15:37:17 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,8 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc < 2 || (argc >= 2 && !argv[1][0]))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+	if (argc < 2)
+		return (0);
 	else if (argc == 2)
 	{
 		temp = ft_split(argv[1], ' ');

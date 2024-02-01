@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:25:40 by jtu               #+#    #+#             */
-/*   Updated: 2024/02/01 13:12:27 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/01 13:57:03 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,26 +60,7 @@ void	push_a2b(t_stack **a, t_stack **b, t_values *values)
 	}
 }
 
-void	push_b2a(t_stack **a, t_stack **b, t_values *values)
-{
-	t_moves	*best_moves;
-	int		len_b;
-
-	best_moves = malloc(sizeof(t_moves));
-	if (!best_moves)
-		free_everything(a, b, values, best_moves);
-	init_moves(best_moves);
-	len_b = stack_len(*b);
-	while (len_b--)
-	{
-		calculate_best_moves(a, b, values, best_moves);
-		apply_best_moves(a, b, best_moves);
-		best_moves->total = INT_MAX;
-	}
-	move_min2(a, values, best_moves);
-}
-
-void	move_min2(t_stack **a, t_values *values, t_moves *best_moves)
+static void	move_min2(t_stack **a, t_values *values, t_moves *best_moves)
 {
 	t_stack	*temp;
 	int		i;
@@ -103,6 +84,25 @@ void	move_min2(t_stack **a, t_values *values, t_moves *best_moves)
 			rra(a, false);
 	}
 	free(best_moves);
+}
+
+void	push_b2a(t_stack **a, t_stack **b, t_values *values)
+{
+	t_moves	*best_moves;
+	int		len_b;
+
+	best_moves = malloc(sizeof(t_moves));
+	if (!best_moves)
+		free_everything(a, b, values, best_moves);
+	init_moves(best_moves);
+	len_b = stack_len(*b);
+	while (len_b--)
+	{
+		calculate_best_moves(a, b, values, best_moves);
+		apply_best_moves(a, b, best_moves);
+		best_moves->total = INT_MAX;
+	}
+	move_min2(a, values, best_moves);
 }
 
 void	push_swap(t_stack **a, t_stack **b)

@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:26:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/31 19:21:13 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/01 13:56:56 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ void	sort_four(t_stack **a, t_stack **b)
 	pa(a, b, false);
 }
 
+static void	move_min1(t_stack **a, t_stack *stack, t_stack *min_node)
+{
+	if (stack->next == min_node)
+	{
+		ra(a, false);
+		ra(a, false);
+	}
+	else if (stack->next->next == min_node)
+	{
+		rra(a, false);
+		rra(a, false);
+	}
+}
+
 void	sort_five(t_stack **a, t_stack **b)
 {
 	t_stack	*min_node;
@@ -64,18 +78,4 @@ void	sort_five(t_stack **a, t_stack **b)
 	pb(a, b, false);
 	sort_four(a, b);
 	pa(a, b, false);
-}
-
-void	move_min1(t_stack **a, t_stack *stack, t_stack *min_node)
-{
-	if (stack->next == min_node)
-	{
-		ra(a, false);
-		ra(a, false);
-	}
-	else if (stack->next->next == min_node)
-	{
-		rra(a, false);
-		rra(a, false);
-	}
 }
