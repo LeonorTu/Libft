@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:09:38 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/30 10:37:50 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/01 13:12:58 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	next_number(int n, t_stack *a)
 {
-	int	next_n;
-	int	next_n_0;
-	int	len;
-	int	found;
+	int		next_n;
+	int		next_n_0;
+	int		len;
+	int		found;
 	t_stack	*a_temp;
 
 	a_temp = a;
@@ -41,16 +41,26 @@ int	next_number(int n, t_stack *a)
 	return (next_n_0);
 }
 
-void	rotate_a(t_stack *a, int n, t_moves *best_moves)
+void	rotate_b(int i, int len, t_moves *best_moves)
 {
-	int	i;
-	int	len;
+	if (i <= len - i)
+		best_moves->nrb = i;
+	else
+		best_moves->nrrb = len - i;
+}
+
+void	rotate_a(t_stack *a, t_stack *b, t_moves *best_moves)
+{
+	int		i;
+	int		len;
+	int		next_n;
 	t_stack	*temp;
 
 	i = 0;
 	len = stack_len(a);
 	temp = a;
-	while (i < len && temp->value != n)
+	next_n = next_number(b->value, a);
+	while (i < len && temp->value != next_n)
 	{
 		temp = temp->next;
 		i++;
@@ -77,37 +87,16 @@ void	replace_rr(t_moves *best_moves)
 	}
 }
 
-int	count_bm(t_moves *best_moves)
-{
-	int	total;
-
-	total = best_moves->nra + best_moves->nrb + best_moves->nrr
-	+ best_moves->nrra + best_moves->nrrb + best_moves->nrrr;
-	best_moves->total = total;
-	return (total);
-}
-
-void	copy_best_moves(t_moves *best_moves, t_moves *best_moves_temp)
-{
-	best_moves->nra = best_moves_temp->nra;
-	best_moves->nrb = best_moves_temp->nrb;
-	best_moves->nrr = best_moves_temp->nrr;
-	best_moves->nrra = best_moves_temp->nrra;
-	best_moves->nrrb = best_moves_temp->nrrb;
-	best_moves->nrrr = best_moves_temp->nrrr;
-	best_moves->total = best_moves_temp->total;
-}
-
-void	calculate_best_moves(t_stack **a, t_stack **b, t_values *values, t_moves *best_moves)
+void	calculate_best_moves(t_stack **a, t_stack **b, t_values *values,
+t_moves *best_moves)
 {
 	int		len;
 	int		i;
-	int		next_n;
 	t_stack	*b_temp;
 	t_moves	*best_moves_temp;
 
 	len = stack_len(*b);
-	best_moves_temp = malloc(sizeof(t_moves)); // no leaks here
+	best_moves_temp = malloc(sizeof(t_moves));
 	if (!best_moves_temp)
 		free_everything(a, b, values, best_moves);
 	b_temp = *b;
@@ -115,12 +104,8 @@ void	calculate_best_moves(t_stack **a, t_stack **b, t_values *values, t_moves *b
 	while (++i < len)
 	{
 		init_moves(best_moves_temp);
-		if (i <= len - i)
-			best_moves_temp->nrb = i;
-		else
-			best_moves_temp->nrrb = len - i;
-		next_n = next_number(b_temp->value, *a);
-		rotate_a(*a, next_n, best_moves_temp);
+		rotate_b(i, len, best_moves_temp);
+		rotate_a(*a, b_temp, best_moves_temp);
 		replace_rr(best_moves_temp);
 		best_moves_temp->total = count_bm(best_moves_temp);
 		if (best_moves_temp->total < best_moves->total)

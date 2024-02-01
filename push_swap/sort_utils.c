@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:23:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/29 17:31:27 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/31 19:26:48 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,40 @@ bool	stack_sorted(t_stack *stack)
 	return (true);
 }
 
-t_stack	*find_biggest(t_stack *stack)
+t_stack	*find_max(t_stack *stack)
 {
-	int		biggest;
-	t_stack	*biggest_node;
+	int		max;
+	t_stack	*max_node;
 
-	biggest = INT_MIN;
+	max = INT_MIN;
 	while (stack)
 	{
-		if (stack->value > biggest)
+		if (stack->value > max)
 		{
-			biggest = stack->value;
-			biggest_node = stack;
+			max = stack->value;
+			max_node = stack;
 		}
 		stack = stack->next;
 	}
-	return (biggest_node);
+	return (max_node);
 }
 
-t_stack	*find_smallest(t_stack *stack)
+t_stack	*find_min(t_stack *stack)
 {
-	int		smallest;
-	t_stack	*smallest_node;
+	int		min;
+	t_stack	*min_node;
 
-	smallest = INT_MAX;
+	min = INT_MAX;
 	while (stack)
 	{
-		if (stack->value < smallest)
+		if (stack->value < min)
 		{
-			smallest = stack->value;
-			smallest_node = stack;
+			min = stack->value;
+			min_node = stack;
 		}
 		stack = stack->next;
 	}
-	return (smallest_node);
+	return (min_node);
 }
 
 t_stack	*last_node(t_stack **stack)
@@ -69,4 +69,10 @@ t_stack	*last_node(t_stack **stack)
 	while (temp->next)
 		temp = temp->next;
 	return (temp);
+}
+
+int	max_value(int n, t_values *values)
+{
+	return (n == values->max1 || n == values->max2 || n == values->max3
+		|| n == values->max4 || n == values->max5);
 }

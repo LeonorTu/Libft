@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:25:40 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/30 11:12:01 by jtu              ###   ########.fr       */
+/*   Updated: 2024/02/01 13:12:27 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,6 @@ void	push_median(t_stack	**a, t_stack **b, t_values *values)
 	pb(a, b, false);
 }
 
-int	max_value(int n, t_values *values)
-{
-	return (n == values->max1 || n == values->max2 ||n == values->max3
-	||n == values->max4 || n == values->max5);
-}
-
 void	push_a2b(t_stack **a, t_stack **b, t_values *values)
 {
 	int	len;
@@ -66,43 +60,12 @@ void	push_a2b(t_stack **a, t_stack **b, t_values *values)
 	}
 }
 
-void	init_moves(t_moves *moves)
-{
-	moves->nra = 0;
-	moves->nrb = 0;
-	moves->nrr = 0;
-	moves->nrra = 0;
-	moves->nrrb = 0;
-	moves->nrrr = 0;
-	moves->total = INT_MAX;
-}
-
-void	apply_best_moves(t_stack **a, t_stack **b, t_moves *best_moves)
-{
-	while (best_moves->nrr--)
-		rr(a, b, false);
-	while (best_moves->nrrr--)
-		rrr(a, b, false);
-	while (best_moves->nrrb--)
-		rrb(b, false);
-	while (best_moves->nrb--)
-		rb(b, false);
-	while (best_moves->nra--)
-		ra(a, false);
-	while (best_moves->nrra--)
-		rra(a, false);
-	pa(a, b, false);
-}
-
 void	push_b2a(t_stack **a, t_stack **b, t_values *values)
 {
 	t_moves	*best_moves;
-	t_stack	*temp;
-	int	len_a;
-	int	len_b;
-	int	i;
+	int		len_b;
 
-	best_moves = malloc(sizeof(t_moves)); // no leaks here
+	best_moves = malloc(sizeof(t_moves));
 	if (!best_moves)
 		free_everything(a, b, values, best_moves);
 	init_moves(best_moves);
@@ -113,6 +76,15 @@ void	push_b2a(t_stack **a, t_stack **b, t_values *values)
 		apply_best_moves(a, b, best_moves);
 		best_moves->total = INT_MAX;
 	}
+	move_min2(a, values, best_moves);
+}
+
+void	move_min2(t_stack **a, t_values *values, t_moves *best_moves)
+{
+	t_stack	*temp;
+	int		i;
+	int		len_a;
+
 	temp = *a;
 	i = 0;
 	while (temp->value != values->min)
@@ -133,48 +105,20 @@ void	push_b2a(t_stack **a, t_stack **b, t_values *values)
 	free(best_moves);
 }
 
-void	find_values(t_stack *stack, t_values *values)
-{
-	int		len;
-	int		i;
-	t_stack	*sorted_stack;
-	t_stack	*temp;
-
-	sorted_stack = stack_copy(stack);
-	temp = sorted_stack;
-	quick_sort(sorted_stack, last_node(&sorted_stack));
-	len = stack_len(sorted_stack);
-	values->min = sorted_stack->value;
-	i = -1;
-	while (++i < len - 1)
-	{
-		if (i == len / 2 + len % 2 - 1)
-			values->median = sorted_stack->value;
-		if (i == len - 2)
-			values->max2 = sorted_stack->value;
-		if (i == len - 3)
-			values->max3 = sorted_stack->value;
-		if (i == len - 4)
-			values->max4 = sorted_stack->value;
-		if (i == len - 5)
-			values->max5 = sorted_stack->value;
-		sorted_stack = sorted_stack->next;
-	}
-	values->max1 = sorted_stack->value;
-	free_stack(&temp);
-}
-
 void	push_swap(t_stack **a, t_stack **b)
 {
 	t_values	*values;
+	t_stack		*sorted_stack;
 
-	values = malloc(sizeof(t_values));   // no leaks here
+	values = malloc(sizeof(t_values));
 	if (!values)
 	{
 		free_stack(a);
 		free_stack(b);
 	}
-	find_values(*a, values);
+	sorted_stack = stack_copy(*a);
+	quick_sort(sorted_stack, last_node(&sorted_stack));
+	find_values(sorted_stack, values);
 	push_median(a, b, values);
 	push_a2b(a, b, values);
 	if (stack_len(*a) == 4)

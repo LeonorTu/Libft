@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:25:59 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/31 15:59:24 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/31 18:37:28 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	sort_stack(t_stack **a, t_stack **b)
 			push_swap(a, b);
 	}
 }
-
 
 int	main(int argc, char **argv)
 {

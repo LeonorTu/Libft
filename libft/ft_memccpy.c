@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:44:04 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/20 20:44:43 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/30 10:32:51 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	int				i;
+	size_t				i;
 	unsigned char	*dest2;
 	unsigned char	*src2;
 

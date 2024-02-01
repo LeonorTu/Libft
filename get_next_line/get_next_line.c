@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:15:39 by jtu               #+#    #+#             */
-/*   Updated: 2023/12/15 15:00:28 by jtu              ###   ########.fr       */
+/*   Updated: 2023/12/20 14:14:40 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,7 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		if (stash)
-			ft_free(&stash);
 		return (NULL);
-	}
 	status = read_to_stash(fd, &stash);
 	if (!stash || !*stash || status < 0 || ft_get_line(&stash, &line) < 0)
 		return (ft_free(&stash));

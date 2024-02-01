@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:26:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/31 15:25:50 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/31 19:21:13 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	sort_three(t_stack **a)
 {
-	t_stack	*biggest_node;
+	t_stack	*max_node;
 
-	biggest_node = find_biggest(*a);
-	if (*a == biggest_node)
+	max_node = find_max(*a);
+	if (*a == max_node)
 		ra(a, false);
-	else if ((*a)->next == biggest_node)
+	else if ((*a)->next == max_node)
 		rra(a, false);
 	if ((*a)->value > (*a)->next->value)
 		sa(a, false);
@@ -27,14 +27,14 @@ void	sort_three(t_stack **a)
 
 void	sort_four(t_stack **a, t_stack **b)
 {
-	t_stack	*smallest_node;
+	t_stack	*min_node;
 
 	if (stack_sorted(*a))
 		return ;
-	smallest_node = find_smallest(*a);
-	if (last_node(a) == smallest_node)
+	min_node = find_min(*a);
+	if (last_node(a) == min_node)
 		rra(a, false);
-	while (*a != smallest_node)
+	while (*a != min_node)
 		ra(a, false);
 	if (stack_sorted(*a))
 		return ;
@@ -43,44 +43,39 @@ void	sort_four(t_stack **a, t_stack **b)
 	pa(a, b, false);
 }
 
-// #include <stdio.h>  //
-// void printList(t_stack *head) {
-//     while (head != NULL) {
-//         printf("%d ", head->value);
-//         head = head->next;
-//     }
-//     printf("\n");
-// }
-
 void	sort_five(t_stack **a, t_stack **b)
 {
-	t_stack	*smallest_node;
+	t_stack	*min_node;
 	t_stack	*temp;
 
 	if (stack_sorted(*a))
 		return ;
 	temp = *a;
-	smallest_node = find_smallest(temp);
-	if (last_node(&temp) == smallest_node)
+	min_node = find_min(temp);
+	if (last_node(&temp) == min_node)
 		rra(a, false);
-	else if (temp->next == smallest_node)
+	else if (temp->next == min_node)
 		ra(a, false);
 	else
 	{
 		temp = temp->next;
-		if (temp->next == smallest_node)
-		{
-			ra(a, false);
-			ra(a, false);
-		}
-		else if (temp->next->next == smallest_node)
-		{
-			rra(a, false);
-			rra(a, false);
-		}
+		move_min1(a, temp, min_node);
 	}
 	pb(a, b, false);
 	sort_four(a, b);
 	pa(a, b, false);
-	// printList(*a); //
+}
+
+void	move_min1(t_stack **a, t_stack *stack, t_stack *min_node)
+{
+	if (stack->next == min_node)
+	{
+		ra(a, false);
+		ra(a, false);
+	}
+	else if (stack->next->next == min_node)
+	{
+		rra(a, false);
+		rra(a, false);
+	}
 }

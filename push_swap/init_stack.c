@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:02:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/31 15:14:34 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/31 18:44:09 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,6 @@ long	ft_atoi_long(const char *str)
 	return (sign * value);
 }
 
-void	free_array(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
-#include <stdio.h> //
 void	init_stack(t_stack **stack, char **argv, int argc)
 {
 	int		i;

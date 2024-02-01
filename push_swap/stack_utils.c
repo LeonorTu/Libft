@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:09:07 by jtu               #+#    #+#             */
-/*   Updated: 2024/01/31 15:19:35 by jtu              ###   ########.fr       */
+/*   Updated: 2024/01/31 19:27:13 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	add_node(t_stack **stack, int n)
 
 	if (!stack)
 		return ;
-	new_node = malloc(sizeof(t_stack));  // leaks here
+	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return ;
 	new_node->value = n;
@@ -54,7 +54,7 @@ t_stack	*stack_copy(const t_stack *stack)
 
 	if (!stack)
 		return (NULL);
-	copy = malloc(sizeof(t_stack)); // no leaks here
+	copy = malloc(sizeof(t_stack));
 	if (!copy)
 		return (NULL);
 	copy->value = stack->value;

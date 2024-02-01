@@ -8,7 +8,7 @@ SRCS = $(wildcard *.c)
 
 SRCS_BONUS = $(filter-out main.c, $(wildcard *.c)) $(wildcard bonus/*.c)
 
-CFLAGS = -Wall -Wextra -Werror -g #remove -g
+CFLAGS = -Wall -Wextra -Werror
 
 all: ${NAME}
 
