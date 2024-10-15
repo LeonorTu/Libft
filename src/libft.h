@@ -16,6 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdint.h>
+
+# define OPEN_MAX 1024
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 /*   By: jtu <jtu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:46:21 by jtu               #+#    #+#             */
-/*   Updated: 2023/11/22 12:54:18 by jtu              ###   ########.fr       */
+/*   Updated: 2024/10/15 18:22:21 by jtu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include "./libft/libft.h"
+# include "../src/libft.h"
 
 typedef struct s_printf{
 	va_list	args;
